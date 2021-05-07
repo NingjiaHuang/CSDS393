@@ -1,0 +1,9 @@
+{
+  "label": "cattery_system",
+  "host": "localhost",
+  "user": "postgres",
+  "port": 5432,
+  "ssl": false,
+  "database": "cattery_db",
+  "password": "Tjygre."
+}

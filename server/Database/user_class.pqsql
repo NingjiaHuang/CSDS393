@@ -1,0 +1,135 @@
+DROP TABLE IF EXISTS breeder, potential_parents, admini, account;
+
+CREATE TABLE account (
+    username name NOT NULL,
+    user_password varchar (200) NOT NULL,
+    account_type varchar (20) NOT NULL,
+    reg_email varchar(40) NOT NULL,
+    reg_phone varchar(15) NOT NULL,
+    PRIMARY KEY(username, user_password, account_type)
+);
+
+CREATE TABLE breeder (
+  cattery_name TEXT NOT NULL,
+  organization varchar(20) NOT NULL,
+  owner_name varchar(20) NOT NULL,
+  city varchar(30) NOT NULL
+) INHERITS (account);
+
+CREATE TABLE potential_parents (
+  preferred_name varchar(20)
+) INHERITS (account);
+
+CREATE TABLE admini(
+)INHERITS (account);
+
+
+DROP ROLE IF EXISTS breeder, potential_parents, admini;
+
+Create role breeder with login;
+Create role potential_parents with login;
+Create role admini with login;
+
+Grant SELECT, UPDATE, INSERT, DELETE on "cat" to breeder;
+Grant SELECT on "cat" to potential_parents;
+Grant SELECT, UPDATE, INSERT, DELETE on "account" to admini;
+
+--grant breeder role to newly created br account
+CREATE OR REPLACE FUNCTION grant_breeder_role() RETURNS trigger AS
+$BODY$
+       DECLARE
+       role_name name;
+       role_password TEXT;
+       BEGIN
+              role_name = NEW.username;
+              role_password = NEW.user_password;
+              EXECUTE FORMAT('CREATE ROLE "%I" WITH PASSWORD ''%I''', role_name, role_password);
+              EXECUTE FORMAT('Grant breeder to "%I"', role_name);
+              RETURN NEW;
+       END;
+$BODY$
+LANGUAGE plpgsql;
+
+
+DROP TRIGGER if exists  g_br_role_tgr on breeder;
+CREATE TRIGGER g_br_role_tgr
+    AFTER INSERT ON breeder
+    FOR EACH ROW EXECUTE PROCEDURE grant_breeder_role();
+
+---breeder instance
+TRUNCATE TABLE  breeder;
+INSERT INTO breeder (username, user_password, account_type ,reg_email, reg_phone, cattery_name, organization, owner_name, city) VALUES
+       ('kimura', 'kimura', 'breeder', 'kimura@gmail.com', '89901921111', 'kimuraragdoll', 'TICA', 'Fan', 'Kansas City');
+INSERT INTO breeder (username, user_password, account_type ,reg_email, reg_phone, cattery_name, organization, owner_name, city) VALUES
+       ('mirum', 'mirum', 'breeder', 'mirumk@gmail.com', '1238792222', 'mirumkitty', 'TICA', 'Judit', 'Kansas City');
+INSERT INTO breeder (username, user_password, account_type ,reg_email, reg_phone, cattery_name, organization, owner_name, city) VALUES
+       ('lunaragdoll', 'lunarag', 'breeder', 'lunarag@gmail.com', '1238792232', 'lunaragdoll', 'TICA', 'Jia', 'Seattle');
+INSERT INTO breeder (username, user_password, account_type ,reg_email, reg_phone, cattery_name, organization, owner_name, city) VALUES
+       ('cottonblues', 'cottonblues', 'breeder', 'cottonblues@gmail.com', '6087218322', 'cottonblues', 'TICA', 'Kristen', 'Cleveland');
+
+
+
+
+
+
+--grant pp role to newly created br account
+CREATE OR REPLACE FUNCTION grant_pp_role() RETURNS trigger AS
+$BODY$
+       DECLARE
+       role_name name;
+       role_password TEXT;
+       BEGIN
+              role_name = NEW.username;
+              role_password = NEW.user_password;
+              EXECUTE FORMAT('CREATE ROLE "%I" WITH PASSWORD ''%I''', role_name, role_password);
+              EXECUTE FORMAT('Grant potential_parents to "%I"', role_name);
+              RETURN NEW;
+       END;
+$BODY$
+LANGUAGE plpgsql;
+
+
+DROP TRIGGER if exists g_pp_role_tgr on potential_parents;
+CREATE TRIGGER g_pp_role_tgr
+    AFTER INSERT ON potential_parents
+    FOR EACH ROW EXECUTE PROCEDURE grant_pp_role();
+
+-- potential_parents
+TRUNCATE TABLE  potential_parents;
+INSERT INTO potential_parents (username, user_password, account_type ,reg_email, reg_phone, preferred_name) VALUES
+       ('nora', 'nora', 'potential parents', 'jxt580@case.edu', '1237891111', 'Nora');
+INSERT INTO potential_parents (username, user_password, account_type ,reg_email, reg_phone, preferred_name) VALUES
+       ('sherry', 'sherry', 'potential parents', 'zxt213@case.edu', '1237891112', 'Sherry');
+
+
+
+--grant admin role to newly created br account
+CREATE OR REPLACE FUNCTION grant_ad_role() RETURNS trigger AS
+$BODY$
+       DECLARE
+       role_name name;
+       role_password TEXT;
+       BEGIN
+              role_name = NEW.username;
+              role_password = NEW.user_password;
+              EXECUTE FORMAT('CREATE ROLE "%I" WITH PASSWORD ''%I''', role_name, role_password);
+              EXECUTE FORMAT('Grant admini to "%I"', role_name);
+              RETURN NEW;
+       END;
+$BODY$
+LANGUAGE plpgsql;
+
+DROP TRIGGER if exists g_ad_role_tgr on admini;
+CREATE TRIGGER g_ad_role_tgr
+    AFTER INSERT ON admini
+    FOR EACH ROW EXECUTE PROCEDURE grant_ad_role();
+
+-- admin
+TRUNCATE TABLE  admini;
+INSERT INTO admini (username, user_password, account_type ,reg_email, reg_phone) VALUES ('ad1', 'ad1ad1', 'admin', 'admin1@gmail.com', '012234')
+INSERT INTO admini (username, user_password, account_type ,reg_email, reg_phone) VALUES ('ad2', 'ad2ad2', 'admin', 'admin2@gmail.com', '023445')
+
+SELECT * FROM breeder;
+
+SELECT * FROM potential_parents;
+
