@@ -14,7 +14,7 @@ router.post("/register/breeder", validInfo, async(req, res) => {
         // 2. check if user exists (by checking user email)
         const user = await db.query("SELECT * FROM account WHERE reg_email = $1", [reg_email]);
         if(user.rows.length !== 0) {
-            return res.status(401).send("User already exists.")
+            return res.status(401).json("User already exists.")
         }
         var newUser = null;
         // 3. Bcrypt the user password
