@@ -3,7 +3,7 @@ import {Link, Redirect} from "react-router-dom";
 import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 
-const BreederLogin = ({setAuth}) => {
+const ParentLogin = ({setAuth}) => {
     const [inputs, setInputs] = useState({
         reg_email: "",
         password: ""
@@ -18,7 +18,7 @@ const BreederLogin = ({setAuth}) => {
         e.preventDefault()
         try {
             const body = {reg_email, password}
-            const response = await fetch("http://localhost:4020/auth/login/breeder", {
+            const response = await fetch("http://localhost:4020/auth/login/parent", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
@@ -39,15 +39,15 @@ const BreederLogin = ({setAuth}) => {
     }
     return (
         <Fragment>
-            <h1 className="text-center my-5">Login</h1>
+            <h1 className="text-center my-5">Parent Login</h1>
             <form onSubmit={onSubmitForm}>
                 <label>Email: </label><input type="email" name="reg_email" placeholder="email" className="form-control my-2" value={reg_email} onChange={e => onChange(e)}/>
                 <label>Password: </label><input type="password" name="password" placeholder="password" className="form-control my-2" value={password} onChange={e => onChange(e)}/>
                 <button className="btn btn-success btn-block">Login</button>
             </form>
-            <Link to="/register/breeder">Breeder Register</Link>
+            <Link to="/register/parent">Parent Register</Link>
         </Fragment>
     )
 }
 
-export default BreederLogin;
+export default ParentLogin;

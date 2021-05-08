@@ -1,11 +1,11 @@
 import React, { Fragment, useState, useEffect } from "react";
 
-const BreederDashboard = ({setAuth}) => {
+const ParentDashboard = ({setAuth}) => {
 
     const [name, setName] = useState("")
     async function getName() {
         try{
-            const response = await fetch("http://localhost:4020/breeder_dashboard/", {
+            const response = await fetch("http://localhost:4020/parent_dashboard/", {
                 method: "GET",
                 headers:{token: localStorage.token}
             });
@@ -33,4 +33,4 @@ const BreederDashboard = ({setAuth}) => {
     )
 }
 
-export default BreederDashboard;
+export default ParentDashboard;
