@@ -10,7 +10,8 @@ import BreederRegister from "./components/register_breeder"
 import ParentDashboard from "./components/dashboard_parent"
 import ParentLogin from "./components/login_parent"
 import ParentRegister from "./components/register_parent"
-
+import AdminDashboard from "./components/dashboard_admin"
+import AdminLogin from "./components/login_admin"
 toast.configure();
 
 function App() {
@@ -79,6 +80,8 @@ function App() {
               <Route exact path="/login/parent" render={props => !isAuthenticated ? <ParentLogin {...props} setAuth={setAuth}/> : <Redirect to="/parent_dashboard"/>}/>
               <Route exact path="/register/parent" render={props => !isAuthenticated ? <ParentRegister {...props} setAuth={setAuth}/> : <Redirect to="/login/parent"/>}/>
               <Route exact path="/parent_dashboard" render={props => isAuthenticated ? <ParentDashboard {...props} setAuth={setAuth}/>: <Redirect to="/login/parent"/>}/>
+              <Route exact path="/login/admin" render={props => !isAuthenticated ? <AdminLogin {...props} setAuth={setAuth}/> : <Redirect to="/admin_dashboard"/>}/>
+              <Route exact path="/admin_dashboard" render={props => isAuthenticated ? <AdminDashboard {...props} setAuth={setAuth}/>: <Redirect to="/login/admin"/>}/>
             </Switch>
           </div>
         </Router>

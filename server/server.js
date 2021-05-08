@@ -15,8 +15,9 @@ app.use(cors());
 // Register and login routes
 app.use("/auth", require("./components/authentication_breeder.js")); 
 
-app.use("/breeder_dashboard", require("./routes/breeder_dashboard"))
-app.use("/breeder_dashboard", require("./routes/parent_dashboard"))
+app.use("/breeder_dashboard", require("./routes/breeder_dashboard"));
+app.use("/breeder_dashboard", require("./routes/parent_dashboard"));
+app.use("/breeder_dashboard", require("./routes/admin_dashboard"));
 //--------------------------------------------------------------------------------------
 // Gene Calculator
 app.get("/api/v1/genecalculator", async (req, res) => {
