@@ -39,7 +39,7 @@ const BreederLogin = ({setAuth}) => {
     }
     return (
         <Fragment>
-            <h1 className="text-center my-5">Login</h1>
+            <h1 className="text-center my-5">Breeder Login</h1>
             <form onSubmit={onSubmitForm}>
                 <label>Email: </label><input type="email" name="reg_email" placeholder="email" className="form-control my-2" value={reg_email} onChange={e => onChange(e)}/>
                 <label>Password: </label><input type="password" name="password" placeholder="password" className="form-control my-2" value={password} onChange={e => onChange(e)}/>

@@ -2,7 +2,7 @@ import React, {Fragment, useState, useEffect} from 'react';
 import './App.css';
 import {toast} from "react-toastify"
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom"
-
+import Navbar from "./components/Navbar/Navbar"
 // components
 import BreederDashboard from "./components/dashboard_breeder"
 import BreederLogin from "./components/login_breeder"
@@ -43,6 +43,7 @@ function App() {
       <Fragment>
         <Router>
           <div className="container">
+            <Navbar />
             <Switch>
               <Route 
               exact 
@@ -83,6 +84,9 @@ function App() {
               <Route exact path="/login/admin" render={props => !isAuthenticated ? <AdminLogin {...props} setAuth={setAuth}/> : <Redirect to="/admin_dashboard"/>}/>
               <Route exact path="/admin_dashboard" render={props => isAuthenticated ? <AdminDashboard {...props} setAuth={setAuth}/>: <Redirect to="/login/admin"/>}/>
             </Switch>
+          </div>
+          <div>
+
           </div>
         </Router>
       </Fragment>
