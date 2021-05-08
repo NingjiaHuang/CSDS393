@@ -1,4 +1,9 @@
 import React, { Fragment, useState, useEffect } from "react";
+import Card from "./Card/Card"
+import add from "../img/add.png"
+import edit from "../img/edit.png"
+import gene from "../img/gene.png"
+import tree from "../img/tree.png"
 
 const BreederDashboard = ({setAuth}) => {
 
@@ -27,8 +32,14 @@ const BreederDashboard = ({setAuth}) => {
     })
     return (
         <Fragment>
-            <h1>Breeder Dashboard {name}</h1>
-            <button className="btn btn-primary" onClick={e => logout(e)}>Logout</button>
+            <div>
+                <h1>Breeder Dashboard {name}</h1> 
+                <button className="btn btn-primary" onClick={e => logout(e)}>Logout</button>
+                <Card title='Add Cat Info' imageUrl={add} body='Add new cats to the existing database.' button="Add Cat"/>
+                <Card title='Edit Cat Info' imageUrl={edit} body='Edit existing cat information.' button="Edit Cat"/>
+                <Card title='Gene Calculator' imageUrl={gene} body='Get info of potential genes of kitten.' button="Gene Calculator"/>
+                <Card title='Family Tree' imageUrl={tree} body='Check the ancestors and descendents of cat.' button="Family Tree"/>
+            </div>
         </Fragment>
     )
 }

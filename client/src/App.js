@@ -43,7 +43,7 @@ function App() {
       <Fragment>
         <Router>
           <div className="container">
-            <Navbar />
+            <Navbar></Navbar>
             <Switch>
               <Route 
               exact 
@@ -67,7 +67,17 @@ function App() {
                   )
                 }
               />
-
+              <Route
+                  exact 
+                  path="/breeder_dashboard" 
+                  render={props => 
+                  isAuthenticated ? (
+                    <BreederDashboard {...props} setAuth={setAuth}/> 
+                  ) : ( 
+                    <Redirect to="/login/breeder" />
+                  )
+                }
+              />
               <Route exact path="/login/parent" render={props => !isAuthenticated ? <ParentLogin {...props} setAuth={setAuth}/> : <Redirect to="/parent_dashboard"/>}/>
               <Route exact path="/register/parent" render={props => !isAuthenticated ? <ParentRegister {...props} setAuth={setAuth}/> : <Redirect to="/login/parent"/>}/>
               <Route exact path="/parent_dashboard" render={props => isAuthenticated ? <ParentDashboard {...props} setAuth={setAuth}/>: <Redirect to="/login/parent"/>}/>
@@ -75,17 +85,7 @@ function App() {
               <Route exact path="/admin_dashboard" render={props => isAuthenticated ? <AdminDashboard {...props} setAuth={setAuth}/>: <Redirect to="/login/admin"/>}/>
             </Switch>
           </div>
-          <Route
-               exact 
-               path="/breeder_dashboard" 
-               render={props => 
-                isAuthenticated ? (
-                  <BreederDashboard {...props} setAuth={setAuth}/> 
-                ) : ( 
-                  <Redirect to="/login/breeder" />
-                )
-              }
-              />
+
           <div>
 
           </div>
