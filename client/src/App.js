@@ -12,6 +12,9 @@ import ParentLogin from "./components/login_parent"
 import ParentRegister from "./components/register_parent"
 import AdminDashboard from "./components/dashboard_admin"
 import AdminLogin from "./components/login_admin"
+import ManageCats from "./components/ManageCats"
+import ManageAccounts from "./components/ManageAccounts"
+
 toast.configure();
 
 function App() {
