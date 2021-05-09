@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react'
-import AddAccount from './ManageAccounts./AddAccount'
-import ListAccount from './ManageAccounts./ListAccount'
+import AddAccount from './ManageAccounts/AddAccount'
+import ListAccount from './ManageAccounts/ListAccount'
 
 export default function ManageAccounts() {
     return (
