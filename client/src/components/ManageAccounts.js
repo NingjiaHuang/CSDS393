@@ -1,6 +1,7 @@
 import React from 'react'
 import AddAccount from './ManageAccounts/AddAAccount'
 import ListAccount from './ManageAccounts/ListAccount'
+import { MDBContainer } from 'mdbreact';
 
 export default function ManageAccounts() {
     return (
