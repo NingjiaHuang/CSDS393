@@ -11,8 +11,8 @@ CREATE TABLE account (
 
 CREATE TABLE breeder (
   cattery_name TEXT NOT NULL,
-  organization varchar(20) NOT NULL,
-  owner_name varchar(20) NOT NULL,
+  organization TEXT NOT NULL,
+  owner_name TEXT NOT NULL,
   city varchar(30) NOT NULL
 ) INHERITS (account);
 
