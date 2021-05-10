@@ -4,11 +4,14 @@ import ListAccount from './ManageAccounts/ListAccount'
 
 export default function ManageAccounts() {
     return (
-        <Fragment>
-            <div className = "container">
-                <AddAccount />
-                <ListAccount />
-            </div>
-            </Fragment>
+        <MDBContainer>
+        <div className='mx-auto mt-5'>
+          <h2 className="text-center">Manage your cats</h2>
+          <AddAccount />
+          <div className='mt-3'>
+          <ListAccount />
+          </div>
+        </div>
+      </MDBContainer>
     )
 }

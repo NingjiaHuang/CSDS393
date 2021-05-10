@@ -20,9 +20,9 @@ const AddAccount = () =>{
     }
 
     return(
-        <Fragment>
-                <Button variant="info" >Add an account</Button>
-        </Fragment>
+        <div class="d-flex justify-content-center">
+                <Button variant="info">Add an account</Button>
+        </div>
     )
 }
 
