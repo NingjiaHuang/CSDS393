@@ -1,5 +1,6 @@
 import React, {Fragment, useState} from 'react'
 import { Button } from 'react-bootstrap';
+import { MDBContainer } from 'mdbreact';
 
 const AddCat = () =>{
     const [info, setInfo] = useState("");
@@ -20,13 +21,13 @@ const AddCat = () =>{
     }
 
     return(
-        <Fragment>
-                <Button variant="info" >Add a bredding cat</Button>
+        <div class="d-flex justify-content-center">
+                <Button variant="info">Add a bredding cat</Button>
                 &nbsp;&nbsp;&nbsp;
                 <Button variant="info">Add a pregnant cat</Button>
                 &nbsp;&nbsp;&nbsp;
                 <Button variant="info">Add a kitten</Button>
-        </Fragment>
+        </div>
     )
 }
 
