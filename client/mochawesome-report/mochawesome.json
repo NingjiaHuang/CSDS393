@@ -1,0 +1,253 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 8,
+    "passes": 8,
+    "pending": 0,
+    "failures": 0,
+    "start": "2021-05-11T21:12:54.125Z",
+    "end": "2021-05-11T21:12:54.133Z",
+    "duration": 8,
+    "testsRegistered": 8,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "eda7ac55-253c-42b8-82ee-d1448413cde5",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "6ddeb82e-a7b3-4ad5-99f8-0cf8a9b66636",
+          "title": "The add function",
+          "fullFile": "C:\\Users\\Jingyu Tang\\Desktop\\CSDS393\\client\\test\\app.spec.js",
+          "file": "\\test\\app.spec.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should add 2 numbers together",
+              "fullTitle": "The add function should add 2 numbers together",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const result = add(2,2);\n//assert.euqal(result, 5);\nexpect(result).to.be.eq(4);",
+              "err": {},
+              "uuid": "b9b884f2-a350-4f3a-9b5c-d7db2086c835",
+              "parentUUID": "6ddeb82e-a7b3-4ad5-99f8-0cf8a9b66636",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should be able to handle 1 number",
+              "fullTitle": "The add function should be able to handle 1 number",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const result = add(2);\nexpect(result).to.be.eq(2)",
+              "err": {},
+              "uuid": "0487cc04-fba3-4c67-95f7-70621bd743b2",
+              "parentUUID": "6ddeb82e-a7b3-4ad5-99f8-0cf8a9b66636",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should be able to handle 0 number",
+              "fullTitle": "The add function should be able to handle 0 number",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const result = add();\nexpect(result).to.be.eq(0);",
+              "err": {},
+              "uuid": "b6703207-e33a-4ef7-9a72-3c9f0f617819",
+              "parentUUID": "6ddeb82e-a7b3-4ad5-99f8-0cf8a9b66636",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return 0 if either argument is not a number",
+              "fullTitle": "The add function should return 0 if either argument is not a number",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const result = add(2, 'test');\nexpect(result).to.be.eq(0);",
+              "err": {},
+              "uuid": "30db12b9-f496-4e93-b311-1de318be3963",
+              "parentUUID": "6ddeb82e-a7b3-4ad5-99f8-0cf8a9b66636",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b9b884f2-a350-4f3a-9b5c-d7db2086c835",
+            "0487cc04-fba3-4c67-95f7-70621bd743b2",
+            "b6703207-e33a-4ef7-9a72-3c9f0f617819",
+            "30db12b9-f496-4e93-b311-1de318be3963"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "badc83cc-80a5-4dbe-a1d8-eb96212d5d98",
+          "title": "The sub function",
+          "fullFile": "C:\\Users\\Jingyu Tang\\Desktop\\CSDS393\\client\\test\\app.spec.js",
+          "file": "\\test\\app.spec.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should sub 2 numbers together",
+              "fullTitle": "The sub function should sub 2 numbers together",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const result = sub(2,2);\n//assert.euqal(result, 5);\nexpect(result).to.be.eq(0);",
+              "err": {},
+              "uuid": "018d9175-b5f5-4f5f-bb70-c668614db80a",
+              "parentUUID": "badc83cc-80a5-4dbe-a1d8-eb96212d5d98",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should be able to handle 1 number",
+              "fullTitle": "The sub function should be able to handle 1 number",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const result = sub(2);\nexpect(result).to.be.eq(2)",
+              "err": {},
+              "uuid": "1f63f996-973c-4651-aa00-f4247b92e32b",
+              "parentUUID": "badc83cc-80a5-4dbe-a1d8-eb96212d5d98",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should be able to handle 0 number",
+              "fullTitle": "The sub function should be able to handle 0 number",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const result = sub();\nexpect(result).to.be.eq(0);",
+              "err": {},
+              "uuid": "d60cb703-e1e4-4a4d-91ea-80be07803f39",
+              "parentUUID": "badc83cc-80a5-4dbe-a1d8-eb96212d5d98",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return 0 if either argument is not a number",
+              "fullTitle": "The sub function should return 0 if either argument is not a number",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const result = sub(2, 'test');\nexpect(result).to.be.eq(0);",
+              "err": {},
+              "uuid": "dab11197-5b0b-4401-a42f-d6e03af0869a",
+              "parentUUID": "badc83cc-80a5-4dbe-a1d8-eb96212d5d98",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "018d9175-b5f5-4f5f-bb70-c668614db80a",
+            "1f63f996-973c-4651-aa00-f4247b92e32b",
+            "d60cb703-e1e4-4a4d-91ea-80be07803f39",
+            "dab11197-5b0b-4401-a42f-d6e03af0869a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "8.4.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.2"
+    },
+    "marge": {
+      "options": null,
+      "version": "5.2.0"
+    }
+  }
+}

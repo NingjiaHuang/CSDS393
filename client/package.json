@@ -18,8 +18,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "mocha test",
+    "eject": "react-scripts eject",
+    "coverage": "nyc --reporter=html npm run test",
+    "test:awesome": "mocha --reporter mochawesome || true",
+    "open:report": "open mochawesome-report/mochawesome.html"
   },
   "eslintConfig": {
     "extends": [
@@ -38,5 +41,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^8.4.0",
+    "mochawesome": "^6.2.2",
+    "nyc": "^15.1.0"
   }
 }
