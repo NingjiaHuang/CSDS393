@@ -19,7 +19,7 @@ const DisplayTree = (cat) =>{
     }, [])
 
     return(
-        <Fragment>
+        <div data-testid = 'displaytree-1'>
              {" "}
           <input type="text" className="form-control" 
           placeholder="search a family member here" 
@@ -55,7 +55,7 @@ const DisplayTree = (cat) =>{
               }
             </tbody>
         </table>
-        </Fragment>
+        </div>
     )
 }
 

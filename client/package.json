@@ -4,21 +4,23 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.4",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
+    "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.1.10",
     "cors": "^2.8.5",
+    "jest-dom": "^4.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
+    "react-test": "^0.8.0",
     "toastify": "^2.0.1",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "mocha test",
+    "test:mocha": "mocha test",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "coverage": "nyc --reporter=html npm run test",
     "test:awesome": "mocha --reporter mochawesome || true",
@@ -43,9 +45,12 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^11.2.6",
     "chai": "^4.3.4",
     "mocha": "^8.4.0",
     "mochawesome": "^6.2.2",
-    "nyc": "^15.1.0"
+    "nyc": "^15.1.0",
+    "react-test-renderer": "^17.0.2"
   }
 }
