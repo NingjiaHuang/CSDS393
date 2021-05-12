@@ -53,17 +53,16 @@ const BreederRegister = ({setAuth}) => {
         <Fragment>
             <h1 className="text-center my-5">Breeder Register</h1>
             <form onSubmit={onSubmitForm}>
-                <label>Name: </label><input type="text" name="username"  value={username} placeholder="name" onChange={e => onChange(e)} className="form-control my-2"/>
-                <label>Password: </label> <input type="password" name="password" placeholder="password" className="form-control my-2" value={password} onChange={e => onChange(e)}/>
-                <label>Email: </label><input type="email" name="reg_email" placeholder="email" className="form-control my-3" value={reg_email} onChange={e => onChange(e)}/>
-                <label>Phone Number: </label><input type="text" name="reg_phone" placeholder="phone" className="form-control my-3" value={reg_phone} onChange={e => onChange(e)}/>
-                <label>Cattery Name: </label><input type="text" name="cattery_name" placeholder="cattery name" className="form-control my-2" value={cattery_name} onChange={e => onChange(e)}/>
-                <label>Organization: </label><input type="text" name="organization" placeholder="organization" className="form-control my-2" value={organization} onChange={e => onChange(e)}/>
-                <label>Owner Name: </label><input type="text" name="owner_name" placeholder="owner name" className="form-control my-2" value={owner_name} onChange={e => onChange(e)}/>
-                <label>City: </label><input type="text" name="city" placeholder="city" className="form-control my-2" value={city} onChange={e => onChange(e)}/>
-                <button className="btn btn-success btn-block">Submit</button>
+                <label htmlFor="name">Name: </label><input id="name" type="text" name="username"  value={username} placeholder="name" onChange={e => onChange(e)} className="form-control my-2"/>
+                <label htmlFor="password">Password: </label> <input id="password"type="password" name="password" placeholder="password" className="form-control my-2" value={password} onChange={e => onChange(e)}/>
+                <label htmlFor="reg_email">Email: </label><input id="reg_email" type="email" name="reg_email" placeholder="email" className="form-control my-3" value={reg_email} onChange={e => onChange(e)}/>
+                <label htmlFor="reg_phone">Phone Number: </label><input id="reg_phone" type="text" name="reg_phone" placeholder="phone" className="form-control my-3" value={reg_phone} onChange={e => onChange(e)}/>
+                <label htmlFor="cattery_name">Cattery Name: </label><input id="cattery_name" type="text" name="cattery_name" placeholder="cattery name" className="form-control my-2" value={cattery_name} onChange={e => onChange(e)}/>
+                <label htmlFor="organization">Organization: </label><input id="organization" type="text" name="organization" placeholder="organization" className="form-control my-2" value={organization} onChange={e => onChange(e)}/>
+                <label htmlFor="owner_name">Owner Name: </label><input id="owner_name" type="text" name="owner_name" placeholder="owner name" className="form-control my-2" value={owner_name} onChange={e => onChange(e)}/>
+                <label htmlFor="city">City: </label><input id="city" type="text" name="city" placeholder="city" className="form-control my-2" value={city} onChange={e => onChange(e)}/>
+                <button className="btn btn-success btn-block" type="submit">Submit</button>
             </form>
-            <Link to="/login/breeder">Breeder Login</Link>
         </Fragment>
     )
 }

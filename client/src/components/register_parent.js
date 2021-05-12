@@ -50,14 +50,13 @@ const ParentRegister = ({setAuth}) => {
         <Fragment>
             <h1 className="text-center my-5">Parent Register</h1>
             <form onSubmit={onSubmitForm}>
-                <label>Name: </label><input type="text" name="username"  value={username} placeholder="name" onChange={e => onChange(e)} className="form-control my-2"/>
-                <label>Password: </label> <input type="password" name="password" placeholder="password" className="form-control my-2" value={password} onChange={e => onChange(e)}/>
-                <label>Email: </label><input type="email" name="reg_email" placeholder="email" className="form-control my-3" value={reg_email} onChange={e => onChange(e)}/>
-                <label>Phone Number: </label><input type="text" name="reg_phone" placeholder="phone" className="form-control my-3" value={reg_phone} onChange={e => onChange(e)}/>
-                <label>Preferred Name: </label><input type="text" name="preferred_name" placeholder="preferred name" className="form-control my-2" value={preferred_name} onChange={e => onChange(e)}/>
+                <label htmlFor='name'>Name: </label><input id = 'name' type="text" name="username"  value={username} placeholder="name" onChange={e => onChange(e)} className="form-control my-2"/>
+                <label htmlFor='password'>Password: </label> <input id='password' type="password" name="password" placeholder="password" className="form-control my-2" value={password} onChange={e => onChange(e)}/>
+                <label htmlFor='reg_email'>Email: </label><input id='reg_email' type="email" name="reg_email" placeholder="email" className="form-control my-3" value={reg_email} onChange={e => onChange(e)}/>
+                <label htmlFor='reg_phone'>Phone Number: </label><input id='reg_phone' type="text" name="reg_phone" placeholder="phone" className="form-control my-3" value={reg_phone} onChange={e => onChange(e)}/>
+                <label htmlFor='preferred_name'>Preferred Name: </label><input id='preferred_name' type="text" name="preferred_name" placeholder="preferred name" className="form-control my-2" value={preferred_name} onChange={e => onChange(e)}/>
                 <button className="btn btn-success btn-block">Submit</button>
             </form>
-            <Link to="/login/parent">Parent Login</Link>
         </Fragment>
     )
 }

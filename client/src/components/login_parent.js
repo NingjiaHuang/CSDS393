@@ -41,11 +41,10 @@ const ParentLogin = ({setAuth}) => {
         <Fragment>
             <h1 className="text-center my-5">Parent Login</h1>
             <form onSubmit={onSubmitForm}>
-                <label>Email: </label><input type="email" name="reg_email" placeholder="email" className="form-control my-2" value={reg_email} onChange={e => onChange(e)}/>
-                <label>Password: </label><input type="password" name="password" placeholder="password" className="form-control my-2" value={password} onChange={e => onChange(e)}/>
+                <label htmlFor ="email">Email: </label><input  id="email" type="email" name="reg_email" placeholder="email" className="form-control my-2" value={reg_email} onChange={e => onChange(e)}/>
+                <label htmlFor ="password">Password: </label><input id="password"type="password" name="password" placeholder="password" className="form-control my-2" value={password} onChange={e => onChange(e)}/>
                 <button className="btn btn-success btn-block" color="pink">Login</button>
             </form>
-            <Link to="/register/parent">Parent Register</Link>
         </Fragment>
     )
 }

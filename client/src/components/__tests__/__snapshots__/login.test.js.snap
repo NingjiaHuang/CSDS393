@@ -1,5 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Admin login matches snapshot of breeder login 1`] = `<login_breeder />`;
+
+exports[`Admin login matches snapshot of potential parents login 1`] = `<login_parent />`;
+
 exports[`matches snapshot of admin login 1`] = `<login_admin />`;
 
 exports[`matches snapshot of breeder login 1`] = `<login_breeder />`;
