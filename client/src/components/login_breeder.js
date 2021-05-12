@@ -43,7 +43,7 @@ const BreederLogin = ({setAuth}) => {
             <form onSubmit={onSubmitForm}>
                 <label htmlFor ="email">Email: </label><input  id="email" type="email" name="reg_email" placeholder="email" className="form-control my-2" value={reg_email} onChange={e => onChange(e)}/>
                 <label htmlFor ="password">Password: </label>< input id="password" input type="password" name="password" placeholder="password" className="form-control my-2" value={password} onChange={e => onChange(e)}/>
-                <button className="btn btn-success btn-block">Login</button>
+                <button data-testid ="loginBtn" className="btn btn-success btn-block">Login</button>
             </form>
         </Fragment>
     )

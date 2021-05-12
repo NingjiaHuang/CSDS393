@@ -1,4 +1,4 @@
-import React, {Fragment, useState, useEffect} from 'react'
+import React, { useState, useEffect} from 'react'
 import mock_data from "./MOCK_DATA_TREE.json"
 
 const DisplayTree = (cat) =>{
@@ -22,6 +22,7 @@ const DisplayTree = (cat) =>{
         <div data-testid = 'displaytree-1'>
              {" "}
           <input type="text" className="form-control" 
+          data-testid="searchTree"
           placeholder="search a family member here" 
           onChange={event => {setSearchTerm(event.target.value)}}
           />

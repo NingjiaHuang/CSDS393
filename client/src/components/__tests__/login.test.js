@@ -82,63 +82,46 @@ test("parent password input should accept text", () => {
 })
     
 
-/*
-describe("Admin login", ()=>{
-    describe("with valid inputs", () =>{
-      it('calls the onSubmitForm function' ,async() =>{
-          const mockOnSubmitForm = jest.fn();
-          const {getByLabelText, getByRole} = render(<AdminLogin onSubmitForm ={mockOnSubmitForm}/>);
-          const submitButton = getByRole('button')
+describe("Admin clicks", () => {
+    it('log in button should be clicked ', () => {
+        const mockOnClick = jest.fn()
+        const { getByTestId } = render(<AdminLogin onClick={mockOnClick()} />)
+      
+        const clickIndicator = getByTestId('loginBtn')
 
-        await act(async() => {
-            fireEvent.change(getByLabelText("Email:"), {target:{value:"email@test.com"}})
-            fireEvent.change(getByLabelText("Password:"), {target:{value:"1234567"}})
-        })
-        await act(async() =>{
-            fireEvent.click(submitButton)
-        })
-      expect(mockOnSubmitForm).toBeCalled()
+        fireEvent.click(clickIndicator)
+
+        expect(mockOnClick).toHaveBeenCalledTimes(1)
+
     })
-})
-})
+    });
 
 
-describe("Breeder login", ()=>{
-    describe("with valid inputs", () =>{
-      it('calls the onSubmitForm function' ,async() =>{
-          const mockOnSubmitForm = jest.fn();
-          const {getByLabelText, getByRole} = render(<BreederLogin onSubmitForm ={mockOnSubmitForm}/>);
-          const submitButton = getByRole('button')
+describe("breeder clicks", () => {
+it('log in button should be clicked ', () => {
+    const mockOnClick = jest.fn()
+    const { getByTestId } = render(<BreederLogin onClick={mockOnClick()} />)
+    
+    const clickIndicator = getByTestId('loginBtn')
 
-        await act(async() => {
-            fireEvent.change(getByLabelText("Email:"), {target:{value:"email@test.com"}})
-            fireEvent.change(getByLabelText("Password:"), {target:{value:"1234567"}})
-        })
-        await act(async() =>{
-            fireEvent.click(submitButton)
-        })
-      expect(mockOnSubmitForm).toBeCalled()
-    })
+    fireEvent.click(clickIndicator)
+
+    expect(mockOnClick).toHaveBeenCalledTimes(1)
+
 })
-})
+});
 
 
-describe("Parent login", ()=>{
-    describe("with valid inputs", () =>{
-      it('calls the onSubmitForm function' ,async() =>{
-          const mockOnSubmitForm = jest.fn();
-          const {getByLabelText, getByRole} = render(<ParentLogin onSubmitForm ={mockOnSubmitForm}/>);
-          const submitButton = getByRole('button')
+describe("Parent clicks", () => {
+it('log in button should be clicked ', () => {
+    const mockOnClick = jest.fn()
+    const { getByTestId } = render(<ParentLogin onClick={mockOnClick()} />)
+    
+    const clickIndicator = getByTestId('loginBtn')
 
-        await act(async() => {
-            fireEvent.change(getByLabelText("Email:"), {target:{value:"email@test.com"}})
-            fireEvent.change(getByLabelText("Password:"), {target:{value:"1234567"}})
-        })
-        await act(async() =>{
-            fireEvent.click(submitButton)
-        })
-      expect(mockOnSubmitForm).toBeCalled()
-    })
+    fireEvent.click(clickIndicator)
+
+    expect(mockOnClick).toHaveBeenCalledTimes(1)
+
 })
-})
-*/
+});

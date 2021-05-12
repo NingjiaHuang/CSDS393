@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import { Button, Modal } from 'react-bootstrap';
-import mock_data from "./MOCK_DATA_TREE.json"
 
 const PairTree = (cat) =>{
     const [info, setInfo] = useState({
@@ -40,16 +39,17 @@ const PairTree = (cat) =>{
 
     return(
         <div>
-                <Button variant="info" onClick={handleShow}>Pair</Button>
+                <Button data-testid="pairBtn" variant="info" onClick={handleShow}>Pair</Button>
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                     <Modal.Title>Pair a kitten with parents</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <form onSubmit={onSubmitForm}>
-                            <label>Kitten certificate number: </label>
+                            <label htmlFor='id'>Kitten certificate number: </label>
                             <input type="text" 
-                            name="id"    
+                            name="id"   
+                            id='id' 
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 

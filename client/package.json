@@ -7,6 +7,7 @@
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.1.10",
     "cors": "^2.8.5",
+    "enzyme": "^3.11.0",
     "jest-dom": "^4.0.0",
     "mdbreact": "^5.0.2",
     "react": "^17.0.2",
@@ -50,6 +51,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^11.2.6",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.1",
     "chai": "^4.3.4",
     "mocha": "^8.4.0",
     "mochawesome": "^6.2.2",

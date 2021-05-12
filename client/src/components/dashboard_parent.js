@@ -25,10 +25,11 @@ const ParentDashboard = ({setAuth}) => {
     useEffect(() => {
         getName()
     })
+    
     return (
         <Fragment>
             <h1>Breeder Dashboard {name}</h1>
-            <button className="btn btn-primary" onClick={e => logout(e)}>Logout</button>
+            <button data-testid="logoutBtn" className="btn btn-primary" onClick={e => logout(e)}>Logout</button>
         </Fragment>
     )
 }

@@ -309,6 +309,7 @@ exports[`matches snapshot of Gene table 1`] = `
           </p>
           <button
             className="ui sm button"
+            data-testid="calBtn"
             onClick={[Function]}
             style={
               Object {

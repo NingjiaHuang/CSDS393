@@ -25,6 +25,7 @@ const SearchCattery = () =>{
         <Fragment>
              {" "}
           <input type="text" className="form-control" 
+          data-testid ="searchcattery"
           placeholder="search cattery here" 
           onChange={event => {setSearchTerm(event.target.value)}}
           />

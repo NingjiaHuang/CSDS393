@@ -198,6 +198,7 @@ export default function GeneTable(){
             <TableCell component="th" scope="row">
                 <p>You clicked {click_value}</p>
                 <Button 
+                data-testid="calBtn"
                 content='Calculate' 
                 icon='signup' 
                 size='sm'  

@@ -7,6 +7,7 @@ exports[`matches snapshot of Display Tree 1`] = `
    
   <input
     className="form-control"
+    data-testid="searchTree"
     onChange={[Function]}
     placeholder="search a family member here"
     type="text"
@@ -13040,6 +13041,7 @@ exports[`matches snapshot of Pair Tree 1`] = `
 <div>
   <button
     className="btn btn-info"
+    data-testid="pairBtn"
     disabled={false}
     onClick={[Function]}
     type="button"
@@ -13065,6 +13067,7 @@ exports[`matches snapshot of family Tree 1`] = `
     <div>
       <button
         className="btn btn-info"
+        data-testid="pairBtn"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -13081,6 +13084,7 @@ exports[`matches snapshot of family Tree 1`] = `
          
         <input
           className="form-control"
+          data-testid="searchTree"
           onChange={[Function]}
           placeholder="search a family member here"
           type="text"

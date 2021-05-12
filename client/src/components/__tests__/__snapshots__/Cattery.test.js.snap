@@ -5,6 +5,7 @@ Array [
   " ",
   <input
     className="form-control"
+    data-testid="searchcattery"
     onChange={[Function]}
     placeholder="search cattery here"
     type="text"

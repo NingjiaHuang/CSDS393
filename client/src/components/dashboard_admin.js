@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 
+
 const AdminDashboard = ({setAuth}) => {
 
     const [name, setName] = useState("")
@@ -28,7 +29,7 @@ const AdminDashboard = ({setAuth}) => {
     return (
         <Fragment>
             <h1>Administrator Dashboard {name}</h1>
-            <button className="btn btn-primary" onClick={e => logout(e)}>Logout</button>
+            <button data-testid="logoutBtn" className="btn btn-primary" onClick={e => logout(e)}>Logout</button>
         </Fragment>
     )
 }
