@@ -88,97 +88,140 @@ app.get("/api/v1/cats", async (req, res) => {
 
 });
 
-// create a new cat, for breeder only (will also update cat family tree table)
-app.post("/api/v1/cats", async (req, res) => {
+// create a new breed cat, for breeder only (will also update cat family tree table)
+app.post("/api/v1/cats/create_breed", async (req, res) => {
     try{
         if((await db.query("SELECT certi_num FROM cat WHERE certi_num = $1", [req.body.certi_num])).rows[0]){
             res.send("Cat already exists.")
         } else {
             result = req.body;
-            console.log("else block")
-            if(req.body.type === ("breed_cat")) {
-                const results = await db.query("INSERT INTO breed_cat (cur_owner_cattery, certi_num, title, cat_reg_name, cat_name, breed, sex, birth_date, sire_name, dam_name, retire_statue, sale_status) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)", 
-                [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name, req.body.retire_statue, req.body.sale_status])
-                var sire_id = parseInt((await db.query("SELECT certi_num FROM cat WHERE cat_name = $1", [req.body.sire_name])).rows[0].certi_num);
-                var dam_id = parseInt((await db.query("SELECT certi_num FROM cat WHERE cat_name = $1", [req.body.dam_name])).rows[0].certi_num);
-                if(!(await db.query("SELECT certi_num FROM cat WHERE cat_name = $1", [req.body.sire_name])).rows[0]){
-                    const sire_node = await db_ft.query("INSERT INTO cat_node (id, cat_name, sire_id, dam_id) VALUES ($1, $2, $3, $4)", [sire_id, req.body.sire_name, null, null])
-                } 
-                if(!(await db.query("SELECT certi_num FROM cat WHERE cat_name = $1", [req.body.dam_name])).rows[0]){
-                    const sire_node = await db_ft.query("INSERT INTO cat_node (id, cat_name, sire_id, dam_id) VALUES ($1, $2, $3, $4)", [dam_id, req.body.dam_name, null, null])
-                } 
-                const node_result = await db_ft.query("INSERT INTO cat_node (id, cat_name, sire_id, dam_id) VALUES ($1, $2, $3, $4)", [req.body.certi_num, req.body.cat_name, sire_id, dam_id]);
-            } else if(req.body.type === ("preg_cat")){
-                const results = await db.query("INSERT INTO preg_cat (cur_owner_cattery, certi_num, title, cat_reg_name, cat_name,breed, sex, birth_date, sire_name, dam_name, sale_status, weight, health_cond) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)", 
-                [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name, req.body.sale_status, req.body.weight, req.body.health_cond])
-                var sire_id = parseInt((await db.query("SELECT certi_num FROM cat WHERE cat_name = $1", [req.body.sire_name])).rows[0].certi_num);
-                var dam_id = parseInt((await db.query("SELECT certi_num FROM cat WHERE cat_name = $1", [req.body.dam_name])).rows[0].certi_num);
-                if(!(await db.query("SELECT certi_num FROM cat WHERE cat_name = $1", [req.body.sire_name])).rows[0]){
-                    const sire_node = await db_ft.query("INSERT INTO cat_node (id, cat_name, sire_id, dam_id) VALUES ($1, $2, $3, $4)", [sire_id, req.body.sire_name, null, null])
-                } 
-                if(!(await db.query("SELECT certi_num FROM cat WHERE cat_name = $1", [req.body.dam_name])).rows[0]){
-                    const sire_node = await db_ft.query("INSERT INTO cat_node (id, cat_name, sire_id, dam_id) VALUES ($1, $2, $3, $4)", [dam_id, req.body.dam_name, null, null])
-                } 
-                const node_result = await db_ft.query("INSERT INTO cat_node (id, cat_name, sire_id, dam_id) VALUES ($1, $2, $3, $4)", [req.body.certi_num, req.body.cat_name, sire_id, dam_id]);
-            } else if(req.body.type === ("kitten")){
-                const results = await db.query("INSERT INTO kitten (cur_owner_cattery, certi_num, title, cat_reg_name, cat_name,breed, sex, birth_date, sire_name, dam_name, retire_statue, sale_status, weight, health_cond, vaccination_cond) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)", 
-                [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name, req.body.retire_statue, req.body.sale_status, req.body.weight, req.body.health_cond, req.body.vaccination_cond])
-                if(!(await db.query("SELECT certi_num FROM cat WHERE cat_name = $1", [req.body.sire_name])).rows[0]){
-                    const sire_node = await db_ft.query("INSERT INTO cat_node (id, cat_name, sire_id, dam_id) VALUES ($1, $2, $3, $4)", [sire_id, req.body.sire_name, null, null])
-                } 
-                if(!(await db.query("SELECT certi_num FROM cat WHERE cat_name = $1", [req.body.dam_name])).rows[0]){
-                    const sire_node = await db_ft.query("INSERT INTO cat_node (id, cat_name, sire_id, dam_id) VALUES ($1, $2, $3, $4)", [dam_id, req.body.dam_name, null, null])
-                } 
-                const node_result = await db_ft.query("INSERT INTO cat_node (id, cat_name, sire_id, dam_id) VALUES ($1, $2, $3, $4)", [req.body.certi_num, req.body.cat_name, sire_id, dam_id]);
-            } else {
-                const results = await db.query("INSERT INTO cat (cur_owner_cattery, certi_num, title, cat_reg_name, cat_name, breed, sex, birth_date, sire_name, dam_name, sale_status) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)", 
-                [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name, req.body.sale_status])
-                if(!(await db.query("SELECT certi_num FROM cat WHERE cat_name = $1", [req.body.sire_name])).rows[0]){
-                    const sire_node = await db_ft.query("INSERT INTO cat_node (id, cat_name, sire_id, dam_id) VALUES ($1, $2, $3, $4)", [sire_id, req.body.sire_name, null, null])
-                } 
-                if(!(await db.query("SELECT certi_num FROM cat WHERE cat_name = $1", [req.body.dam_name])).rows[0]){
-                    const sire_node = await db_ft.query("INSERT INTO cat_node (id, cat_name, sire_id, dam_id) VALUES ($1, $2, $3, $4)", [dam_id, req.body.dam_name, null, null])
-                } 
-                const node_result = await db_ft.query("INSERT INTO cat_node (id, cat_name, sire_id, dam_id) VALUES ($1, $2, $3, $4)", [req.body.certi_num, req.body.cat_name, sire_id, dam_id]);
-            }
+            const results = await db.query("INSERT INTO breed_cat (cur_owner_cattery, certi_num, title, cat_reg_name, cat_name, breed, sex, birth_date, sire_name, dam_name, retire_statue, sale_status) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)", 
+            [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name, req.body.retire_statue, req.body.sale_status])
+        }
             res.status(201).json({
                 status: "success",
                 data: {
                     cat: result
                 }
             })
+        } catch(err) {
+        console.log(err)
+    }
+});
+
+// create a new pregnant cat, for breeder only
+app.post("/api/v1/cats/create_preg", async (req, res) => {
+    try{
+        if((await db.query("SELECT certi_num FROM cat WHERE certi_num = $1", [req.body.certi_num])).rows[0]){
+            res.send("Cat already exists.")
+        } else {
+            result = req.body;
+            const results = await db.query("INSERT INTO preg_cat (cur_owner_cattery, certi_num, title, cat_reg_name, cat_name,breed, sex, birth_date, sire_name, dam_name, sale_status, weight, health_cond) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)", 
+            [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name, req.body.sale_status, req.body.weight, req.body.health_cond])
         }
+            res.status(201).json({
+                status: "success",
+                data: {
+                    cat: result
+                }
+            })
+        } catch(err) {
+        console.log(err)
+    }
+});
+
+// create a new kitten, for breeder only
+app.post("/api/v1/cats/create_kitten", async (req, res) => {
+    try{
+        if((await db.query("SELECT certi_num FROM cat WHERE certi_num = $1", [req.body.certi_num])).rows[0]){
+            res.send("Cat already exists.")
+        } else {
+            result = req.body;
+            const results = await db.query("INSERT INTO kitten (cur_owner_cattery, certi_num, title, cat_reg_name, cat_name,breed, sex, birth_date, sire_name, dam_name, sale_status, weight, health_cond, vaccination_cond) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)", 
+            [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name, req.body.sale_status, req.body.weight, req.body.health_cond, req.body.vaccination_cond])
+        }
+            res.status(201).json({
+                status: "success",
+                data: {
+                    cat: result
+                }
+            })
+        } catch(err) {
+        console.log(err)
+    }
+});
+
+// create a new cat, for breeder only
+app.post("/api/v1/cats/create_cat", async (req, res) => {
+    try{
+        if((await db.query("SELECT certi_num FROM cat WHERE certi_num = $1", [req.body.certi_num])).rows[0]){
+            res.send("Cat already exists.")
+        } else {
+            result = req.body;
+            const results = await db.query("INSERT INTO cat (cur_owner_cattery, certi_num, title, cat_reg_name, cat_name,breed, sex, birth_date, sire_name, dam_name, sale_status) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)", 
+            [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name, req.body.sale_status])
+        }
+            res.status(201).json({
+                status: "success",
+                data: {
+                    cat: result
+                }
+            })
+        } catch(err) {
+        console.log(err)
+    }
+});
+
+// update a breed cat
+app.put("/api/v1/cats/update_breed", async (req, res) => {
+    try{
+        const results = await db.query("UPDATE breed_cat SET cur_owner_cattery = $1, certi_num = $2, title = $3, cat_reg_name = $4, cat_name = $5, breed = $6, sex = $7, birth_date = $8, sire_name = $9, dam_name = $10, sale_status = $11, retire_statue = $12 WHERE certi_num = $13",
+        [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name,  req.body.sale_status, req.body.retire_statue, req.body.certi_num])
+        res.status(200).json({
+            status: "success"
+        })
     }catch(err){
         console.log(err)
     }
 });
- 
-// update a cat information, for breeder only
-app.put("/api/v1/cats/:id", async (req, res) => {
+
+// update a pregnant cat
+app.put("/api/v1/cats/update_preg", async (req, res) => {
     try{
-        const cat_type = req.body.cat_type;
-        if(cat_type === "breed") {
-            const results = await db.query("UPDATE breed_cat SET cur_owner_cattery = $1, certi_num = $2, title = $3, cat_reg_name = $4, cat_name = $5, breed = $6, sex = $7, birth_date = $8, sire_name = $9, dam_name = $10, sale_status = $11, retire_statue = $12 WHERE certi_num = $13",
-            [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name, req.body.retire_statue, req.body.sale_status, req.params.id])
-        }else if(cat_type === "pregnant") {
-            const results = await db.query("UPDATE preg_cat SET cur_owner_cattery = $1, certi_num = $2, title = $3, cat_reg_name = $4, cat_name = $5, breed = $6, sex = $7, birth_date = $8, sire_name = $9, dam_name = $10, sale_status = $11, weight = $12, health_cond = $13 WHERE certi_num = $14", 
-            [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name, req.body.sale_status, req.body.weight, req.body.health_cond, req.params.id])
-        }else if(cat_type === "kitten") {
-            const results = await db.query("UPDATE kitten SET cur_owner_cattery = $1, certi_num = $2, title = $3, cat_reg_name = $4, cat_name = $5, breed = $6, sex = $7, birth_date = $8, sire_name = $9, dam_name = $10, retire_statue = $11, sale_status = $12, weight = $13, health_cond = $14, vaccination_cond = $15 WHERE certi_num = $16", 
-            [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name, req.body.retire_statue, req.body.sale_status, req.body.weight, req.body.health_cond, req.body.vaccination_cond, req.body.params])
-        }else {
-            const results = await db.query("UPDATE cat SET cur_owner_cattery = $1, certi_num = $2, title = $3, cat_reg_name = $4, cat_name = $5, breed = $6, sex = $7, birth_date = $8, sire_name = $9, dam_name = $10, sale_status = $11 WHERE certi_num = $12", 
-            [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name, req.body.sale_status, req.params.id])
-        }
+        const results = await db.query("UPDATE preg_cat SET cur_owner_cattery = $1, certi_num = $2, title = $3, cat_reg_name = $4, cat_name = $5, breed = $6, sex = $7, birth_date = $8, sire_name = $9, dam_name = $10, sale_status = $11, weight = $12, health_cond = $13 WHERE certi_num = $14",
+        [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name,  req.body.sale_status, req.body.weight, req.body.health_cond, req.body.certi_num])
+        res.status(200).json({
+            status: "success"
+        })
     }catch(err){
         console.log(err)
     }
-    res.status(200).json({
-        status: "success",
-        data: {
-            cat: "hello bob",
-        },
-    })
+});
+
+// update a kitten
+app.put("/api/v1/cats/update_kitten", async (req, res) => {
+    try{
+        const results = await db.query("UPDATE kitten SET cur_owner_cattery = $1, certi_num = $2, title = $3, cat_reg_name = $4, cat_name = $5, breed = $6, sex = $7, birth_date = $8, sire_name = $9, dam_name = $10, sale_status = $11, weight = $12, health_cond = $13, vaccination_cond = $14 WHERE certi_num = $15",
+        [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name,  req.body.sale_status, req.body.weight, req.body.health_cond, req.body.vaccination_cond, req.body.certi_num])
+        res.status(200).json({
+            status: "success"
+        })
+    }catch(err){
+        console.log(err)
+    }
+});
+
+// update a cat
+app.put("/api/v1/cats/update_cat", async (req, res) => {
+    try{
+        const results = await db.query("UPDATE cat SET cur_owner_cattery = $1, certi_num = $2, title = $3, cat_reg_name = $4, cat_name = $5, breed = $6, sex = $7, birth_date = $8, sire_name = $9, dam_name = $10, sale_status = $11 WHERE certi_num = $12",
+        [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name,  req.body.sale_status, req.body.certi_num])
+        res.status(200).json({
+            status: "success"
+        })
+    }catch(err){
+        console.log(err)
+    }
 });
 
 // delete cat, for breeder only
