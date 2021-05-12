@@ -51,7 +51,9 @@ const AddPCat = () =>{
 
     return(
         <div>
-                <Button variant="info" onClick={handleShow}>Add a pregnant cat</Button>
+                <Button 
+                data-testid="showBtn"
+                variant="info" onClick={handleShow}>Add a pregnant cat</Button>
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                     <Modal.Title>Add a pregnant cat</Modal.Title>

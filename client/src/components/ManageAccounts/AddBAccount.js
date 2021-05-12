@@ -45,7 +45,7 @@ const AddBAccount = () =>{
 
     return(
         <div>
-                <Button variant="info" onClick={handleShow}>Add breeder account</Button>
+                <Button data-testid="showBtn" variant="info" onClick={handleShow}>Add breeder account</Button>
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                     <Modal.Title>Add a kitten</Modal.Title>

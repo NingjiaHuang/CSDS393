@@ -40,7 +40,7 @@ const AddAAccount = () =>{
 
     return(
         <div>
-                <Button variant="info" onClick={handleShow}>Add an admin account</Button>
+                <Button data-testid="showBtn" variant="info" onClick={handleShow}>Add an admin account</Button>
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                     <Modal.Title>Add a breeding cat</Modal.Title>

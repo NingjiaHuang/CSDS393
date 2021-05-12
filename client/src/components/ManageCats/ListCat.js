@@ -1,6 +1,6 @@
 import { getContrastRatio } from '@material-ui/core'
 import React, {Fragment, useEffect, useState} from 'react';
-import mock_data from "./MOCK_DATA.json"
+import mock_data from "../MOCK_DATA.json"
 import EditCat from "./EditCat"
 import AddCat from "./AddCat"
 
@@ -41,6 +41,7 @@ const ListCat = () =>{
         {" "}
         <input type="text" className="form-control" 
           placeholder="search cats by name here" 
+          data-testid="searchCat"
           onChange={event => {setSearchTerm(event.target.value)}}
           />
         <table class="table mt-5 text-center">

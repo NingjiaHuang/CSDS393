@@ -51,7 +51,7 @@ const AddKitten = () =>{
 
     return(
         <div>
-                <Button variant="info" onClick={handleShow}>Add a kitten</Button>
+                <Button data-testid="showBtn" variant="info" onClick={handleShow}>Add a kitten</Button>
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                     <Modal.Title>Add a kitten</Modal.Title>

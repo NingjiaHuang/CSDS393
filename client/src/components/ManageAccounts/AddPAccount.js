@@ -41,7 +41,7 @@ const AddPAccount = () =>{
 
     return(
         <div>
-                <Button variant="info" onClick={handleShow}>Add a potential parent account</Button>
+                <Button data-testid="showBtn" variant="info" onClick={handleShow}>Add a potential parent account</Button>
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                     <Modal.Title>Add a pregnant cat</Modal.Title>

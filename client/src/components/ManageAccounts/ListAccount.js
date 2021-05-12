@@ -39,6 +39,7 @@ const ListAccount = () =>{
         {" "}
         <input type="text" className="form-control" 
           placeholder="search cats by name here" 
+          data-testid="searchAccount"
           onChange={event => {setSearchTerm(event.target.value)}}
           />
         <table class="table mt-5 text-center">
