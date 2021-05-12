@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot of add a kitten 1`] = `
+<div>
+  <button
+    className="btn btn-info"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    Add a kitten
+  </button>
+</div>
+`;
+
+exports[`matches snapshot of add breeding cat 1`] = `
+<div>
+  <button
+    className="btn btn-info"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    Add a bredding cat
+  </button>
+</div>
+`;
+
+exports[`matches snapshot of add pregnant cat 1`] = `
+<div>
+  <button
+    className="btn btn-info"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    Add a pregnant cat
+  </button>
+</div>
+`;

@@ -1,7 +1,5 @@
-import React, {Fragment, useState} from 'react'
+import React, {useState} from 'react'
 import { Button, Modal } from 'react-bootstrap';
-import { MDBContainer } from 'mdbreact';
-import { valueContainerCSS } from 'react-select/src/components/containers';
 
 const AddBAccount = () =>{
     const [info, setInfo] = useState({

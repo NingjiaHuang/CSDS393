@@ -7,8 +7,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+
 import { Button } from 'semantic-ui-react'
-import Select from 'react-select';
 
 const useStyles = makeStyles({
   table: {
@@ -33,7 +33,7 @@ export default function GeneTable(){
         click_setValue([bs_value,bd_value,ps_value,pd_value,hs_value,hd_value]);
         const body = {click_value}
         const response = await fetch("http://localhost:4020/genecalculator", {
-            method: "Get",
+            method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(body)
         })
@@ -41,8 +41,7 @@ export default function GeneTable(){
     } catch(err) {
         console.error(err.message);
     }
-  }
-  
+}
   const classes = useStyles();
   
 
