@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot of navbar 1`] = `
+<nav
+  className="NavbarItems"
+>
+  <h1
+    className="navbar-logo"
+  >
+    PatCat
+    <i
+      className="fab fa-react"
+    />
+  </h1>
+  <div
+    className="menu-icon"
+    onCilck={[Function]}
+  >
+    <i
+      className="fas fa-bars"
+    />
+  </div>
+  <ul
+    className="nav-menu"
+  >
+    <li>
+      <a
+        className="nav-links"
+        href="http://localhost:3000/register/breeder"
+      >
+        Breeder Register
+      </a>
+    </li>
+    <li>
+      <a
+        className="nav-links"
+        href="http://localhost:3000/login/breeder"
+      >
+        Breeder Login
+      </a>
+    </li>
+    <li>
+      <a
+        className="nav-links"
+        href="http://localhost:3000/register/parent"
+      >
+        Parent Register
+      </a>
+    </li>
+    <li>
+      <a
+        className="nav-links"
+        href="http://localhost:3000/login/parent"
+      >
+        Parent Login
+      </a>
+    </li>
+    <li>
+      <a
+        className="nav-links"
+        href="http://localhost:3000/login/admin"
+      >
+        Administrator Login
+      </a>
+    </li>
+  </ul>
+</nav>
+`;

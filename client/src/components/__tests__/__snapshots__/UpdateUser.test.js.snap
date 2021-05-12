@@ -1,0 +1,215 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot of update admin info 1`] = `
+Array [
+  <h1
+    className="text-center my-5"
+  >
+    Update your account
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <label>
+      Username: 
+    </label>
+    <input
+      className="form-control my-2"
+      name="username"
+      onChange={[Function]}
+      type="text"
+    />
+    <label>
+      Password: 
+    </label>
+     
+    <input
+      className="form-control my-2"
+      name="password"
+      onChange={[Function]}
+      type="text"
+    />
+    <label>
+      Email: 
+    </label>
+    <input
+      className="form-control my-3"
+      name="reg_email"
+      onChange={[Function]}
+      type="text"
+    />
+    <label>
+      Phone: 
+    </label>
+    <input
+      className="form-control my-3"
+      name="reg_phone"
+      onChange={[Function]}
+      type="text"
+    />
+                    
+    <button
+      className="btn btn-success btn-block"
+    >
+      Update
+    </button>
+  </form>,
+]
+`;
+
+exports[`matches snapshot of update breeder info 1`] = `
+Array [
+  <h1
+    className="text-center my-5"
+  >
+    Update your account
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <label>
+      Username: 
+    </label>
+    <input
+      className="form-control my-2"
+      name="username"
+      onChange={[Function]}
+      type="text"
+    />
+    <label>
+      Password: 
+    </label>
+     
+    <input
+      className="form-control my-2"
+      name="password"
+      onChange={[Function]}
+      type="text"
+    />
+    <label>
+      Email: 
+    </label>
+    <input
+      className="form-control my-3"
+      name="reg_email"
+      onChange={[Function]}
+      type="text"
+    />
+    <label>
+      Phone: 
+    </label>
+    <input
+      className="form-control my-3"
+      name="reg_phone"
+      onChange={[Function]}
+      type="text"
+    />
+    <label>
+      Cattery name: 
+    </label>
+    <input
+      className="form-control my-3"
+      name="cattery_name"
+      onChange={[Function]}
+      type="text"
+    />
+    <label>
+      Organization: 
+    </label>
+    <input
+      className="form-control my-3"
+      name="organization"
+      onChange={[Function]}
+      type="text"
+    />
+    <label>
+      Owner name: 
+    </label>
+    <input
+      className="form-control my-3"
+      name="owner_name"
+      onChange={[Function]}
+      type="text"
+    />
+    <label>
+      City: 
+    </label>
+    <input
+      className="form-control my-3"
+      name="city"
+      onChange={[Function]}
+      type="text"
+    />
+    <button
+      className="btn btn-success btn-block"
+    >
+      Update
+    </button>
+  </form>,
+]
+`;
+
+exports[`matches snapshot of update parent info 1`] = `
+Array [
+  <h1
+    className="text-center my-5"
+  >
+    Update your account
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <label>
+      Username: 
+    </label>
+    <input
+      className="form-control my-2"
+      name="username"
+      onChange={[Function]}
+      type="text"
+    />
+    <label>
+      Password: 
+    </label>
+     
+    <input
+      className="form-control my-2"
+      name="password"
+      onChange={[Function]}
+      type="text"
+    />
+    <label>
+      Email: 
+    </label>
+    <input
+      className="form-control my-3"
+      name="reg_email"
+      onChange={[Function]}
+      type="text"
+    />
+    <label>
+      Phone: 
+    </label>
+    <input
+      className="form-control my-3"
+      name="reg_phone"
+      onChange={[Function]}
+      type="text"
+    />
+    <label>
+      Preferred name: 
+    </label>
+    <input
+      className="form-control my-3"
+      name="preferred_name"
+      onChange={[Function]}
+      type="text"
+    />
+    <button
+      className="btn btn-success btn-block"
+    >
+      Update
+    </button>
+  </form>,
+]
+`;
