@@ -1,7 +1,7 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import mock_data from "../MOCK_DATA.json"
 
-const ListCat = () =>{
+const ListCatParent = () =>{
     const[searchTerm, setSearchTerm] = useState("")
     const[cats, setCats] = useState([]);
 
@@ -56,4 +56,4 @@ const ListCat = () =>{
     </Fragment>
     )
 }
-export default ListCat;
+export default ListCatParent;
