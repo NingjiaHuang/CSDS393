@@ -37,7 +37,7 @@ const ListCat = () =>{
                 </tr>
             </thead>
             <tbody>
-            {cats.filter((val) =>{  //if get all catteries completed, change "mock_data" to catteries
+            {cats.filter((val) =>{ 
                   if (searchTerm == ""){
                     return val
                   } else if (val.cat_name.toLowerCase().includes(searchTerm.toLowerCase()) ){
