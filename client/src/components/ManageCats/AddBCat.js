@@ -2,7 +2,7 @@ import React, {Fragment, useState} from 'react'
 import { Button, Modal } from 'react-bootstrap';
 import { MDBContainer } from 'mdbreact';
 
-const AddBcat = () =>{
+const AddBcat = ({setAuth}) =>{
     const [info, setInfo] = useState({
         cur_owner_cattery:"",
         cur_owner:"",
@@ -34,13 +34,14 @@ const AddBcat = () =>{
         e.preventDefault();
         try{
             const body = {cur_owner_cattery, cur_owner, certi_num, title, cat_reg_name, cat_name,
-                breed, sex, birth_date, sire_name, dam_name, sale_status,retire_status};
+                breed, sex, birth_date, sire_name, dam_name, sale_status, retire_status};
+
             const response = await fetch("http://localhost:4020/api/v1/cats/create_breed", { // url needs update. need to add to breeding cat table
-                method: "Post",
+                method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
             });
-            console.log(response)
+
             window.location="/";
         } catch(err){
             console.error(err.message);
@@ -57,7 +58,7 @@ const AddBcat = () =>{
                     <Modal.Title>Add a breeding cat</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <form onSubmit={onSubmitForm}>
+                        <form name="addcat" id="addcat" onSubmit={onSubmitForm}>
                             <label>Current owner cattery name: </label>
                             <input type="text" 
                             name="cur_owner_cattery"    
@@ -144,7 +145,7 @@ const AddBcat = () =>{
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="warning" onClick={onSubmitForm, handleClose}>
+                    <Button variant="warning" onClick={onSubmitForm}>
                         Add
                     </Button>
                     </Modal.Footer>
