@@ -2,9 +2,8 @@ import { getContrastRatio } from '@material-ui/core'
 import React, {Fragment, useEffect, useState} from 'react';
 import mock_data from "../MOCK_DATA.json"
 import EditCat from "./EditCat"
-import AddCat from "./AddCat"
 
-const ListCat = () =>{
+const ListCatBreeder = () =>{
     const[searchTerm, setSearchTerm] = useState("")
     const[cats, setCats] = useState([]);
 
@@ -54,21 +53,21 @@ const ListCat = () =>{
                 </tr>
             </thead>
             <tbody>
-            {mock_data.filter((val) =>{  //if get all catteries completed, change "mock_data" to catteries
+            {cats.filter((val) =>{  //if get all catteries completed, change "mock_data" to catteries
                   if (searchTerm == ""){
                     return val
-                  } else if (val.cattery_name.toLowerCase().includes(searchTerm.toLowerCase()) ){
+                  } else if (val.cat_name.toLowerCase().includes(searchTerm.toLowerCase()) ){
                     return val
                   }
               }
               ).map((val, key) => (
                   <tr key={key}>
-                      <td>{val.cattery_name}</td>
-                      <td>{val.owner_name}</td>
+                      <td>{val.certi_num}</td>
+                      <td>{val.cat_name}</td>
                         <td><EditCat  cat = {val}/></td>
                     <td>
                         <button className="btn btn-danger"
-                        onClick={() => deleteCat(val.cattery_name)}>Delete</button>
+                        onClick={() => deleteCat(val.certi_num)}>Delete</button>
                     </td>
                 </tr>
             ))
@@ -78,4 +77,4 @@ const ListCat = () =>{
     </Fragment>
     )
 }
-export default ListCat;
+export default ListCatBreeder;

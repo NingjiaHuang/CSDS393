@@ -1,10 +1,10 @@
 import React, {Fragment,} from 'react'
 import AddCat from './ManageCats/AddCat'
-import ListCat from './ManageCats/ListCat'
+import ListCatBreeder from './ManageCats/ListCatBreeder'
 import { MDBContainer } from 'mdbreact';
 import { Link } from "react-router-dom"
 
-const ManageCats = ({setAuth}) => {
+const ManageCatsBreeder = ({setAuth}) => {
     return (
       <Fragment>
         <MDBContainer>
@@ -12,7 +12,7 @@ const ManageCats = ({setAuth}) => {
           <h2 className="text-center">Manage your cats </h2>
             <AddCat />
           <div className='mt-3'>
-            <ListCat />
+            <ListCatBreeder />
           </div>
         </div>
       </MDBContainer>
@@ -20,4 +20,4 @@ const ManageCats = ({setAuth}) => {
     )
 }
 
-export default ManageCats;
+export default ManageCatsBreeder;

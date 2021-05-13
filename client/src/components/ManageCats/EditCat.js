@@ -19,8 +19,8 @@ const EditCat = ({cat}) =>{
         e.preventDefault();
         try{
             const body = {certi_num, cat_name, title, cat_reg_name, sale_status};
-            const response = await fetch(`http://localhost:4020/api/v1/cats/${cat.certi_num}`,{
-                method:"PUT",
+            const response = await fetch(`http://localhost:4020/api/v1/cats/update_cat`,{
+                method:"PATCH",
                 headers: {"Content-type": "application/json"},
                 body: JSON.stringify(body)
             });
