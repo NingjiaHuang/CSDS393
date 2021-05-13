@@ -4,26 +4,26 @@ import EditAccount from "./EditAccount"
 
 const ListAccount = () =>{
     const[searchTerm, setSearchTerm] = useState("")
-    const[cats, setCats] = useState([]);
+    const[accounts, setAccounts] = useState([]);
 
     //delete cat function
-    const deleteCat = async(id) =>{
+    const deleteAccount = async(reg_email) =>{
         try{
-            const deleteCat = await fetch(`http://localhost:4020/api/v1/cats/${id}`,{
+            const deleteAccount = await fetch(`http://localhost:4020/api/v1/cats/${user.reg_email}`,{
                 method: "DELETE"
             });
-            setCats(cats.filter(cat => cat.certi_num !== id))
+            setAccounts(accounts.filter(account => account.reg_email !== reg_email))
         }catch (err){
             console.error(err.message);
         }
     }
 
-    const getCats = async() => {
+    const getAccounts = async() => {
         try{
             
             const response = await fetch("http://localhost:4020/api/v1/cats")
             const jsonData = await response.json()
-            setCats(jsonData);
+            setAccounts(jsonData);
 
         } catch (err){
             console.error(err.message);
@@ -31,7 +31,7 @@ const ListAccount = () =>{
     }
 
     useEffect(() =>{
-        getCats();
+        getAccounts();
     }, [])
 
     return (
@@ -45,28 +45,30 @@ const ListAccount = () =>{
         <table class="table mt-5 text-center">
             <thead>
                 <tr>
-                    <th>Certificate Number</th>
-                    <th>Cat Name</th>
+                    <th>Username</th>
+                    <th>Account Type</th>
+                    <th>Email</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
-            {mock_data.filter((val) =>{  //if get all catteries completed, change "mock_data" to catteries
+            {accounts.filter((val) =>{  //if get all catteries completed, change "mock_data" to catteries
                   if (searchTerm == ""){
                     return val
-                  } else if (val.cattery_name.toLowerCase().includes(searchTerm.toLowerCase()) ){
+                  } else if (val.username.toLowerCase().includes(searchTerm.toLowerCase()) ){
                     return val
                   }
               }
               ).map((val, key) => (
                   <tr key={key}>
-                      <td>{val.cattery_name}</td>
-                      <td>{val.owner_name}</td>
-                        <td><EditAccount  cat = {val}/></td>
+                      <td>{val.username}</td>
+                      <td>{val.account_type}</td>
+                      <td>{val.reg_email}</td>
+                        <td><EditAccount  account = {val}/></td>
                     <td>
                         <button className="btn btn-danger"
-                        onClick={() => deleteCat(val.cattery_name)}>Delete</button>
+                        onClick={() => deleteAccount(val.reg_email)}>Delete</button>
                     </td>
                 </tr>
             ))
