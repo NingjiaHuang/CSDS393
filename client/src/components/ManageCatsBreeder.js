@@ -4,7 +4,7 @@ import ListCat from './ManageCats/ListCat'
 import { MDBContainer } from 'mdbreact';
 import { Link } from "react-router-dom"
 
-const ManageCats = ({setAuth}) => {
+const ManageCatsBreeder = ({setAuth}) => {
     return (
       <Fragment>
         <MDBContainer>
@@ -20,4 +20,4 @@ const ManageCats = ({setAuth}) => {
     )
 }
 
-export default ManageCats;
+export default ManageCatsBreeder;

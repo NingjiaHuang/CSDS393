@@ -35,12 +35,12 @@ const AddBcat = () =>{
         try{
             const body = {cur_owner_cattery, cur_owner, certi_num, title, cat_reg_name, cat_name,
                 breed, sex, birth_date, sire_name, dam_name, sale_status,retire_status};
-            const response = await fetch("http://localhost:4020/api/v1/cats",{ // url needs update. need to add to breeding cat table
-                method:"Post",
+            const response = await fetch("http://localhost:4020/api/v1/cats/create_breed", { // url needs update. need to add to breeding cat table
+                method: "Post",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
             });
-
+            console.log(response)
             window.location="/";
         } catch(err){
             console.error(err.message);

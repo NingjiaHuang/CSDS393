@@ -35,7 +35,7 @@ const BreederDashboard = ({setAuth}) => {
             <div>
                 <h1>Breeder Dashboard {name}</h1> 
                 <button className="btn btn-primary" onClick={e => logout(e)}>Logout</button>
-                <Card title='Edit Cat Info' imageUrl={edit} body='Edit cat information or add a new cat.' button="Edit Cat" url="/manage_cat"/>
+                <Card title='Edit Cat Info' imageUrl={edit} body='Edit cat information or add a new cat.' button="Edit Cat" url="/manage_cat_breeder"/>
                 <Card title='Gene Calculator' imageUrl={gene} body='Get info of potential genes of kitten.' button="Gene Calculator"/>
                 <Card title='Family Tree' imageUrl={tree} body='Check the ancestors and descendents of cat.' button="Family Tree"/>
                 <Card title='Search Cattery' imageUrl={cattery} body='Search the catteries who use our system.' button="Search Cattery"/>

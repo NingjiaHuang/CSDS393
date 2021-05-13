@@ -12,7 +12,8 @@ import ParentLogin from "./components/login_parent"
 import ParentRegister from "./components/register_parent"
 import AdminDashboard from "./components/dashboard_admin"
 import AdminLogin from "./components/login_admin"
-import ManageCats from "./components/ManageCats"
+import ManageCatsBreeder from "./components/ManageCatsBreeder"
+import ManageCatsParent from "./components/ManageCatsParent"
 
 toast.configure();
 
@@ -85,7 +86,8 @@ function App() {
               <Route exact path="/parent_dashboard" render={props => isAuthenticated ? <ParentDashboard {...props} setAuth={setAuth}/>: <Redirect to="/login/parent"/>}/>
               <Route exact path="/login/admin" render={props => !isAuthenticated ? <AdminLogin {...props} setAuth={setAuth}/> : <Redirect to="/admin_dashboard"/>}/>
               <Route exact path="/admin_dashboard" render={props => isAuthenticated ? <AdminDashboard {...props} setAuth={setAuth}/>: <Redirect to="/login/admin"/>}/>
-              <Route exact path="/manage_cat" render={props => isAuthenticated ? <ManageCats {...props} setAuth={setAuth}/>: <Redirect to="/login/breeder"/>}/>
+              <Route exact path="/manage_cat_breeder" render={props => isAuthenticated ? <ManageCatsBreeder {...props} setAuth={setAuth}/>: <Redirect to="/login/breeder"/>}/>
+              <Route exact path="/manage_cat_parent" render={props => isAuthenticated ? <ManageCatsParent {...props} setAuth={setAuth}/>: <Redirect to="/login/parent"/>}/>
             </Switch>
           </div>
 
