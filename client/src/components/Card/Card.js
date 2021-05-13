@@ -1,6 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Card.css'
-const Card = ({title, imageUrl, body, button}) => {
+
+const Card = ({title, imageUrl, body, button, url}) => {
     return (
         <div className="card-container">
             <div className="image-container">
@@ -16,7 +18,11 @@ const Card = ({title, imageUrl, body, button}) => {
             </div>
 
             <div className="btn">
-                <a>{button}</a>
+                <Link to={url}>
+                <button>
+                    <a>{button}</a>
+                </button>
+                </Link>
             </div>
         </div>
     )

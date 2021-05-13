@@ -12,6 +12,8 @@ import ParentLogin from "./components/login_parent"
 import ParentRegister from "./components/register_parent"
 import AdminDashboard from "./components/dashboard_admin"
 import AdminLogin from "./components/login_admin"
+import ManageCats from "./components/ManageCats"
+
 toast.configure();
 
 function App() {
@@ -83,6 +85,7 @@ function App() {
               <Route exact path="/parent_dashboard" render={props => isAuthenticated ? <ParentDashboard {...props} setAuth={setAuth}/>: <Redirect to="/login/parent"/>}/>
               <Route exact path="/login/admin" render={props => !isAuthenticated ? <AdminLogin {...props} setAuth={setAuth}/> : <Redirect to="/admin_dashboard"/>}/>
               <Route exact path="/admin_dashboard" render={props => isAuthenticated ? <AdminDashboard {...props} setAuth={setAuth}/>: <Redirect to="/login/admin"/>}/>
+              <Route exact path="/manage_cat" render={props => isAuthenticated ? <ManageCats {...props} setAuth={setAuth}/>: <Redirect to="/login/breeder"/>}/>
             </Switch>
           </div>
 
