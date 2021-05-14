@@ -1,14 +1,15 @@
 import React, { useState, useEffect} from 'react'
 import mock_data from "./MOCK_DATA_TREE.json"
 
-const DisplayTree = (cat) =>{
+const DisplayTree = () =>{
   const[searchTerm, setSearchTerm] = useState("")
   const[tree, setTree] = useState([]);
   const getTree = async() => {
       try{
-          const response = await fetch(`http://localhost:4020/api/v1/gettree/${cat.certi_num}`) //should be get tree of a certain cat
+          const response = await fetch("http://localhost:4020/api/v1/get_all_nodes") //should be get tree of a certain cat
           const jsonData = await response.json()
           setTree(jsonData);
+          console.log(tree)
       } catch (err){
           console.error(err.message);
       }
@@ -36,7 +37,7 @@ const DisplayTree = (cat) =>{
                   </tr>
               </thead>
               <tbody>
-              {mock_data.filter((val) =>{  //if get all tree completed, change "mock_data" to tree
+              {Object.values(tree).filter((val) =>{  //if get all tree completed, change "mock_data" to tree
                   if (searchTerm == ""){
                     return val
                   } else if (val.cat_name.toLowerCase().includes(searchTerm.toLowerCase()) ){

@@ -238,7 +238,7 @@ app.delete("/api/v1/cats/:id", (req, res)=>{
 })
 //--------------------------------------------------------------------------------------
 // family tree pair two cat (as child)
-app.patch("/api/v1/cats/tree", async (req, res) =>{
+app.post("/api/v1/cats/tree", async (req, res) =>{
     try{
         const node = await db.query("SELECT * FROM cat_node WHERE id = $1", [req.body.id])
         if(req.body.sire_name === "" || req.body.dam_name === "" || req.body.child_name === ""){

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Button, Modal } from 'react-bootstrap';
 
-const PairTree = (cat) =>{
+const PairTree = () =>{
     const [info, setInfo] = useState({
         id:"",
         cat_name:"",
@@ -23,13 +23,14 @@ const PairTree = (cat) =>{
         e.preventDefault();
         try{
             const body = {id, cat_name, sire_id, dam_id};
-            const response = await fetch(`http://localhost:4020/api/v1/gettree/${cat.certi_num}`,{ // url needs update. need to add to breeding cat table
-                method:"Post",
+            console.log(body);
+            const response = await fetch("http://localhost:4020/api/v1/cats/tree",{ // url needs update. need to add to breeding cat table
+                method:"POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
             });
 
-            window.location="/";
+            window.location="/family_tree";
         } catch(err){
             console.error(err.message);
         }
@@ -79,7 +80,7 @@ const PairTree = (cat) =>{
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="warning" onClick={onSubmitForm, handleClose}>
+                    <Button variant="warning" onClick={onSubmitForm}>
                         Pair
                     </Button>
                     </Modal.Footer>
