@@ -1,5 +1,5 @@
 import React from 'react'
-import AddAccount from './ManageAccounts/AddAAccount'
+import AddAccount from './ManageAccounts/AddAccount'
 import ListAccount from './ManageAccounts/ListAccount'
 import { MDBContainer } from 'mdbreact';
 

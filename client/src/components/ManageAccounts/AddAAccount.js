@@ -4,13 +4,13 @@ import { Button, Modal } from 'react-bootstrap';
 const AddAAccount = () =>{
     const [info, setInfo] = useState({
         username:"",
-        user_password:"",
+        password:"",
         account_type:"admini",
         reg_email:"",
         reg_phone:"",
     });
 
-    const {username, user_password,account_type, reg_email, reg_phone} = info;
+    const {username, password,account_type, reg_email, reg_phone} = info;
         
     const onChange = (e) => {
         setInfo({...info, [e.target.name]:e.target.value})
@@ -23,14 +23,15 @@ const AddAAccount = () =>{
     const onSubmitForm = async(e) => {
         e.preventDefault();
         try{
-            const body = {username, user_password,account_type, reg_email, reg_phone};
-            const response = await fetch("http://localhost:4020/api/v1/cats",{ // url needs update. need to add to breeding cat table
+            const body = {username, password,account_type, reg_email, reg_phone};
+            console.log(body);
+            const response = await fetch("http://localhost:4020/auth/register/admin",{ // url needs update. need to add to breeding cat table
                 method:"Post",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
             });
 
-            window.location="/";
+            window.location="/manage_user_account";
         } catch(err){
             console.error(err.message);
         }
@@ -56,7 +57,7 @@ const AddAAccount = () =>{
                             <label>Password: </label>
                             <input 
                             type="text" 
-                            name="user_password"  
+                            name="password"  
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
@@ -78,7 +79,7 @@ const AddAAccount = () =>{
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="warning" onClick={onSubmitForm, handleClose}>
+                    <Button variant="warning" onClick={onSubmitForm}>
                         Add
                     </Button>
                     </Modal.Footer>
