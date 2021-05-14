@@ -1,5 +1,5 @@
 import React, {Fragment, useEffect, useState} from 'react';
-import mock_data from "../MOCK_DATA.json"
+
 import EditAccount from "./EditAccount"
 
 const ListAccount = () =>{
@@ -9,10 +9,14 @@ const ListAccount = () =>{
     //delete cat function
     const deleteAccount = async(reg_email) =>{
         try{
+            const body = {reg_email};
             const deleteAccount = await fetch("http://localhost:4020/auth/delete",{
-                method: "DELETE"
+                method: "DELETE",
+                headers: {"Content-type": "application/json"},
+                body: JSON.stringify(body)
             });
-            setAccounts(accounts.filter(account => account.reg_email !== reg_email))
+            console.log("deleted")
+            setAccounts(Object.values(accounts).filter(account => account.reg_email !== reg_email))
         }catch (err){
             console.error(err.message);
         }
@@ -20,7 +24,7 @@ const ListAccount = () =>{
 
     const getAccounts = async() => {
         try{
-            
+            console.log("executed")
             const response = await fetch("http://localhost:4020/auth/all_accounts")
             const jsonData = await response.json()
             setAccounts(jsonData);
@@ -38,7 +42,7 @@ const ListAccount = () =>{
     <Fragment>
         {" "}
         <input type="text" className="form-control" 
-          placeholder="search cats by name here" 
+          placeholder="search accounts by username here" 
           data-testid="searchAccount"
           onChange={event => {setSearchTerm(event.target.value)}}
           />
@@ -53,7 +57,7 @@ const ListAccount = () =>{
                 </tr>
             </thead>
             <tbody>
-            {accounts.filter((val) =>{  //if get all catteries completed, change "mock_data" to catteries
+            {Object.values(accounts).filter((val) =>{  //if get all catteries completed, change "mock_data" to catteries
                   if (searchTerm == ""){
                     return val
                   } else if (val.username.toLowerCase().includes(searchTerm.toLowerCase()) ){
@@ -65,7 +69,7 @@ const ListAccount = () =>{
                       <td>{val.username}</td>
                       <td>{val.account_type}</td>
                       <td>{val.reg_email}</td>
-                        <td><EditAccount  cat = {val}/></td>
+                        <td><EditAccount  account = {val}/></td>
                     <td>
                         <button className="btn btn-danger"
                         onClick={() => deleteAccount(val.reg_email)}>Delete</button>

@@ -239,34 +239,32 @@ app.delete("/api/v1/cats/:id", (req, res)=>{
 //--------------------------------------------------------------------------------------
 // family tree pair two cat (as child)
 app.patch("/api/v1/cats/tree", async (req, res) =>{
-    if(req.body.sire_name === "" || req.body.dam_name === "" || req.body.child_name === ""){
-        res.status(403).send("Please fill in all the fields.");
-    } else {
-        const cat_result = await db.query("UPDATE cat SET sire_name = $1, dam_name = $2 WHERE cat_name = $3", [req.body.sire_name, req.body.dam_name, req.body.child_name]);
-        const node_result = await db.query("INSERT INTO cat_node (id, cat_name, sire_id, dam_id) VALUES ($1, $2, $3, $4)", [req.body.id, req.body.sire_name, req.body.dam_name, req.body.child_name])
+    try{
+        const node = await db.query("SELECT * FROM cat_node WHERE id = $1", [req.body.id])
+        if(req.body.sire_name === "" || req.body.dam_name === "" || req.body.child_name === ""){
+            res.status(403).send("Please fill in all the fields.")
+        } else {
+            const node_result = await db.query("INSERT INTO cat_node (id, cat_name, sire_id, dam_id) VALUES ($1, $2, $3, $4)", [req.body.id, req.body.cat_name, req.body.sire_id, req.body.dam_id])
+        }
+        res.status(204).json({
+            status: "success",
+        })
+    } catch(err){
+        res.send("Pairng two cats failed.")
     }
-    res.status(204).json({
-        status: "success",
-        data: node_result
-    })
 })
 
 // get family tree
-app.get("/api/v1/cats/gettree", async (req, res) => {
-    console.log("hello world")
+// get all nodes
+app.get("/api/v1/get_all_nodes", async (req, res) => {
     try{
-        // construct path name
-        const path_name = concat("dam_root_", req.body.child_name, ".", req.body.id)
-        console.log(path_name)
-        // get the sire path and dam path of a cat
-        // const sire_path = (await db.query("SELECT sire_path FROM cat_node WHERE id = $1", [id])).rows[0];
-        //const dam_path = await db.query("SELECT dam_path FROM cat_node WHERE id = $1", [id]).rows[0];
-        //console.log(sire_path, dam_path);
-        //res.send(sire_path, dam_path)
-        //const ancestors = db_ft.query("SELECT * from cat_node WHERE dam_path @> ")
-        //const descendants = db_ft.query("SELECT * from cat_node WHERE ")
-    }catch(err){
-        res.send("Failed to get the family tree");
+        const results = await db.query("SELECT * FROM cat_node");
+        res.status(200).json({
+            status:"success",
+            data: results.rows
+        })
+    } catch(err){
+        console.log(err);
     }
 })
 //--------------------------------------------------------------------------------------

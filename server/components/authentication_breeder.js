@@ -177,10 +177,12 @@ router.delete("/delete", async (req, res)=>{
 })
 
 // update user info
-router.put("/update_account", async (req, res) => {
+router.patch("/update_account", async (req, res) => {
     try{
-        const results = await db.query("UPDATE account SET username = $1, user_password = $2, account_type = $3, reg_email = $4, reg_phone = $5 WHERE reg_email = $6", 
-        [req.body.username, req.body.user_password, req.body.account_type, req.body.reg_email, req.body.reg_phone, req.body.reg_email])
+        console.log(req.body.username)
+        const results = await db.query("UPDATE account SET username = $1, user_password = $2, account_type = $3, reg_phone = $4 WHERE reg_email = $5", 
+        [req.body.username, req.body.user_password, req.body.account_type,  req.body.reg_phone, req.body.reg_email])
+
     }catch(err){
         console.log(err)
     }

@@ -1,4 +1,3 @@
-import { getContrastRatio } from '@material-ui/core'
 import React, {Fragment, useEffect, useState} from 'react';
 import mock_data from "../MOCK_DATA.json"
 import EditCat from "./EditCat"

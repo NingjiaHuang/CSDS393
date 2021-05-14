@@ -1,26 +1,32 @@
 import React,{Fragment, useState} from 'react';
+import {Modal, Button} from 'react-bootstrap';
+
 
 const EditAccount = ({account}) =>{
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     const [inputs, setInputs] = useState({
-        username: "",
-        password: "",
-        account_type: "",
-        reg_email: "",
-        reg_phone: "",
+        username: account.username,
+        user_password: account.user_password,
+        account_type:  account.account_type,
+        reg_email: account.reg_email,
+        reg_phone: account.reg_phone,
     }); 
-    const {username, password, account_type, reg_email, reg_phone} = inputs;
+    const {username, user_password, account_type, reg_email, reg_phone} = inputs;
     const onChange = (e) => {
         setInputs({...inputs, [e.target.name]:e.target.value})
     }
 
 
     //update cat info function
-    const updateUserInfo = async(e) =>{
+    const updateAccountInfo = async(e) =>{
         e.preventDefault();
         try{
-            const body = {username, password, account_type, reg_email, reg_phone};
+            const body = {username, user_password, account_type, reg_email, reg_phone};
+            console.log(body)
             const response = await fetch("http://localhost:4020/auth/update_account",{
-                method:"PUT",
+                method:"PATCH",
                 headers: {"Content-type": "application/json"},
                 body: JSON.stringify(body)
             });
@@ -35,37 +41,18 @@ const EditAccount = ({account}) =>{
     return(
         <Fragment>
 
-            <button type="button" 
+            <Button type="button" 
             class="btn btn-warning" 
-            data-toggle="modal" 
-            data-target={`#id${account.reg_email}`}>
+            onClick={handleShow}>
             Edit
-            </button>
-
-            {/*
-                id = id10
-                this is the real one!!!!
-                <div class="modal" id={`id${cat.certi_num}`} onClick={() => setcerti_num(cat.certi_num)}>
-            */}
+            </Button>
             
-            
-            <div class="modal" id={`id${account.reg_email}`} 
-            onClick={() => setInputs(account.username, account.password, account.account_type, account.reg_email,  account.reg_phone)}>
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Account</h4>
-                    <button type="button" class="close" data-dismiss="modal" 
-                     onClick={() => setInputs(account.username, account.password, account.account_type, account.reg_email,  account.reg_phone)}>
-                        &times;
-                    </button>
-                </div>
-
-
-                <div class="modal-body">
-                    <form>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                <Modal.Title>Edit Account</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <form onSubmit={updateAccountInfo}>
                         <label>Username: </label>
                         <input type="text" 
                         name="username"    
@@ -77,21 +64,16 @@ const EditAccount = ({account}) =>{
                         <input 
                         type="text" 
                         name="password"  
-                        placeholder={account.password}  
+                        placeholder={account.user_password}  
                         onChange={e => onChange(e)}
                         className="form-control my-2"/>
 
-                        <label>Account type: </label>
+                        <label>Account Type: </label>
                         <input 
                         type="text" 
-                        name="account_type"   
+                        name="account_type"  
                         placeholder={account.account_type}  
-                        className="form-control my-2"/>
-
-                        <label>Email: </label>
-                        <input type="text" 
-                        name="reg_email"   
-                        placeholder={account.reg_email} 
+                        onChange={e => onChange(e)}
                         className="form-control my-2"/>
 
                         <label>Phone: </label>
@@ -100,27 +82,18 @@ const EditAccount = ({account}) =>{
                         placeholder={account.reg_phone} 
                         onChange={e => onChange(e)}
                         className="form-control my-2"/>
-
-                        <button type="button" class="btn btn-warning" 
-                        data-dismiss="modal"
-                        onClick ={e => updateUserInfo(e)}>
-                            Edit
-                        </button>
-                 </form>
-                </div>
-
-
-                <div class="modal-footer">
-                    
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"
-                     onClick={() => setInputs(account.username, account.password, account.account_type, account.reg_email,  account.reg_phone)}>
+                    </form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
                         Close
-                    </button>
-                </div>
+                    </Button>
+                    <Button variant="primary" onClick={updateAccountInfo}>
+                        Save Changes
+                    </Button>
+                </Modal.Footer>
 
-                </div>
-            </div>
-            </div>
+                </Modal>
         </Fragment>
     )
 }
