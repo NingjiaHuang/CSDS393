@@ -86,7 +86,7 @@ const AddPAccount = () =>{
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="warning" onClick={onSubmitForm, handleClose}>
+                    <Button variant="warning" onClick={onSubmitForm}>
                         Add
                     </Button>
                     </Modal.Footer>

@@ -4,9 +4,9 @@ const express = require("express");
 const cors = require('cors');
 const app = express();
 const db = require("./Database/index.js");
-const db_ft = require("./Database/index_family_tree.js");
-const db_cattery = require("./Database/index_cattery.js");
-const db_gene = require("./Database/index_gene.js");
+//const db_ft = require("./Database/index_family_tree.js");
+//const db_cattery = require("./Database/index_cattery.js");
+//const db_gene = require("./Database/index_gene.js");
 
 app.use(express.json());
 
@@ -173,11 +173,50 @@ app.post("/api/v1/cats/create_cat", async (req, res) => {
     }
 });
 
+// update a breed cat
+app.put("/api/v1/cats/update_breed/:id", async (req, res) => {
+    try{
+        const results = await db.query("UPDATE breed_cat SET cur_owner_cattery = $1, certi_num = $2, title = $3, cat_reg_name = $4, cat_name = $5, breed = $6, sex = $7, birth_date = $8, sire_name = $9, dam_name = $10, sale_status = $11, retire_statue = $12 WHERE certi_num = $13",
+        [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name,  req.body.sale_status, req.body.retire_statue, req.params.id])
+        res.status(200).json({
+            status: "success"
+        })
+    }catch(err){
+        console.log(err)
+    }
+});
+
+// update a pregnant cat
+app.put("/api/v1/cats/update_preg", async (req, res) => {
+    try{
+        const results = await db.query("UPDATE preg_cat SET cur_owner_cattery = $1, certi_num = $2, title = $3, cat_reg_name = $4, cat_name = $5, breed = $6, sex = $7, birth_date = $8, sire_name = $9, dam_name = $10, sale_status = $11, weight = $12, health_cond = $13 WHERE certi_num = $14",
+        [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name,  req.body.sale_status, req.body.weight, req.body.health_cond, req.body.certi_num])
+        res.status(200).json({
+            status: "success"
+        })
+    }catch(err){
+        console.log(err)
+    }
+});
+
+// update a kitten
+app.put("/api/v1/cats/update_kitten", async (req, res) => {
+    try{
+        const results = await db.query("UPDATE kitten SET cur_owner_cattery = $1, certi_num = $2, title = $3, cat_reg_name = $4, cat_name = $5, breed = $6, sex = $7, birth_date = $8, sire_name = $9, dam_name = $10, sale_status = $11, weight = $12, health_cond = $13, vaccination_cond = $14 WHERE certi_num = $15",
+        [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name,  req.body.sale_status, req.body.weight, req.body.health_cond, req.body.vaccination_cond, req.body.certi_num])
+        res.status(200).json({
+            status: "success"
+        })
+    }catch(err){
+        console.log(err)
+    }
+});
+
 // update a cat
 app.patch("/api/v1/cats/update_cat", async (req, res) => {
     try{
-        const results = await db.query("UPDATE cat SET certi_num = $1, cat_name = $2, title = $3, cat_reg_name = $4, sale_status=$5 WHERE certi_num = $6",
-        [req.body.certi_num, req.body.cat_name, req.body.title, req.body.cat_reg_name, req.body.sale_status, req.body.certi_num])
+        const results = await db.query("UPDATE cat SET certi_num = $1, cat_name=$2, title = $3, cat_reg_name = $4, sale_status = $5 WHERE certi_num = $6",
+        [ req.body.certi_num, req.body.cat_name, req.body.title, req.body.cat_reg_name, req.body.sale_status, req.body.certi_num])
         res.status(200).json({
             status: "success"
         })
@@ -204,7 +243,7 @@ app.patch("/api/v1/cats/tree", async (req, res) =>{
         res.status(403).send("Please fill in all the fields.");
     } else {
         const cat_result = await db.query("UPDATE cat SET sire_name = $1, dam_name = $2 WHERE cat_name = $3", [req.body.sire_name, req.body.dam_name, req.body.child_name]);
-        const node_result = await db_ft.query("INSERT INTO cat_node (id, cat_name, sire_id, dam_id) VALUES ($1, $2, $3, $4)", [req.body.id, req.body.sire_name, req.body.dam_name, req.body.child_name])
+        const node_result = await db.query("INSERT INTO cat_node (id, cat_name, sire_id, dam_id) VALUES ($1, $2, $3, $4)", [req.body.id, req.body.sire_name, req.body.dam_name, req.body.child_name])
     }
     res.status(204).json({
         status: "success",
@@ -247,7 +286,7 @@ app.get("/api/v1/catteries", async (req, res) => {
 app.put("/api/v1/cattery", async (req, res) => {
     try{
         const {reg_email, reg_phone, cattery_name, organization, owner_name, city} = req.body;
-        const results = await db_cattery.query("UPDATE cattery SET cattery_name = $1, organization = $2, owner_name = $3, city = $4 WHERE reg_email = $5 AND reg_phone = $6", 
+        const results = await db.query("UPDATE cattery SET cattery_name = $1, organization = $2, owner_name = $3, city = $4 WHERE reg_email = $5 AND reg_phone = $6", 
         [req.body.cattery_name, req.body.organization, req.body.owner_name, req.body.city, req.body.reg_email, req.body.reg_phone])
     }catch(err){
         console.log(err)

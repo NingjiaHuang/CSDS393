@@ -165,9 +165,9 @@ router.get("/is-verify", authorization, async (req, res) => {
 })
 
 // delete a user (for administrator only)
-router.delete("/delete", (req, res)=>{
+router.delete("/delete", async (req, res)=>{
     try {
-        const results = db.query("DELETE FROM account where reg_email = $1", [req.body.reg_email])
+        const results = await db.query("DELETE FROM account where reg_email = $1", [req.body.reg_email])
         res.status(204).json({
             status: "success"
         })

@@ -8,7 +8,7 @@ const EditCat = ({cat}, {setAuth}) =>{
 
 
     const [inputs, setInputs] = useState({
-        certi_num: "",
+        certi_num: cat.certi_num,
         cat_name: "",
         title: "",
         cat_reg_name: "",

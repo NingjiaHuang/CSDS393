@@ -46,7 +46,7 @@ const ListAccount = () =>{
             <thead>
                 <tr>
                     <th>Username</th>
-                    <th>Account Type</th>
+                    <th>Account type</th>
                     <th>Email</th>
                     <th>Edit</th>
                     <th>Delete</th>
@@ -65,11 +65,11 @@ const ListAccount = () =>{
                       <td>{val.username}</td>
                       <td>{val.account_type}</td>
                       <td>{val.reg_email}</td>
-                        <td><EditAccount  account = {val}/></td>
+                        <td><EditAccount  cat = {val}/></td>
                     <td>
                         <button className="btn btn-danger"
                         onClick={() => deleteAccount(val.reg_email)}>Delete</button>
-                    </td>
+                        </td>
                 </tr>
             ))
             }
