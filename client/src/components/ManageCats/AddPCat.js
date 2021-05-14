@@ -1,7 +1,8 @@
-import React, { useState} from 'react'
-import { Button, Modal} from 'react-bootstrap';
+import React, {Fragment, useState} from 'react'
+import { Button, Modal } from 'react-bootstrap';
+import { MDBContainer } from 'mdbreact';
 
-const AddPCat = () =>{
+const AddPcat = ({setAuth}) =>{
     const [info, setInfo] = useState({
         cur_owner_cattery:"",
         cur_owner:"",
@@ -15,13 +16,12 @@ const AddPCat = () =>{
         sire_name:"",
         dam_name:"",
         sale_status:"",
-        weight:"",
-        health_cond:""
+        retire_status:"",
     });
 
     const {cur_owner_cattery, cur_owner, certi_num, title, cat_reg_name, cat_name,
-    breed, sex, birth_date, sire_name, dam_name, sale_status, weight, health_cond} = info;
-    
+        breed, sex, birth_date, sire_name, dam_name, sale_status,retire_status} = info;
+        
     const onChange = (e) => {
         setInfo({...info, [e.target.name]:e.target.value})
     }
@@ -34,9 +34,10 @@ const AddPCat = () =>{
         e.preventDefault();
         try{
             const body = {cur_owner_cattery, cur_owner, certi_num, title, cat_reg_name, cat_name,
-                breed, sex, birth_date, sire_name, dam_name, sale_status, weight, health_cond};
-            const response = await fetch("http://localhost:4020/api/v1/cats",{
-                method:"Post",
+                breed, sex, birth_date, sire_name, dam_name, sale_status, retire_status};
+
+            const response = await fetch("http://localhost:4020/api/v1/cats/create_breed", { // url needs update. need to add to breeding cat table
+                method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
             });
@@ -51,15 +52,13 @@ const AddPCat = () =>{
 
     return(
         <div>
-                <Button 
-                data-testid="showBtn"
-                variant="info" onClick={handleShow}>Add a pregnant cat</Button>
+                <Button data-testid="showBtn" variant="info" onClick={handleShow} >Add a breeding cat</Button>
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
-                    <Modal.Title>Add a pregnant cat</Modal.Title>
+                    <Modal.Title>Add a breeding cat</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <form>
+                        <form name="addcat" id="addcat" onSubmit={onSubmitForm}>
                             <label>Current owner cattery name: </label>
                             <input type="text" 
                             name="cur_owner_cattery"    
@@ -135,15 +134,9 @@ const AddPCat = () =>{
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Current weight: </label>
+                            <label>Retire status: </label>
                             <input type="text" 
-                            name="weight"   
-                            className="form-control my-2"
-                            onChange={e => onChange(e)}/>
-
-                            <label>Health condition: </label>
-                            <input type="text" 
-                            name="health_cond"   
+                            name="retire_status"   
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
                         </form>
@@ -152,7 +145,7 @@ const AddPCat = () =>{
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="warning" onClick={onSubmitForm, handleClose}>
+                    <Button variant="warning" onClick={onSubmitForm}>
                         Add
                     </Button>
                     </Modal.Footer>
@@ -161,4 +154,4 @@ const AddPCat = () =>{
     )
 }
 
-export default AddPCat;
+export default AddPcat;

@@ -1,4 +1,4 @@
-import React, {Fragment,} from 'react'
+import React, {Fragment} from 'react'
 import AddCat from './ManageCats/AddCat'
 import ListCat from './ManageCats/ListCat'
 import { MDBContainer } from 'mdbreact';

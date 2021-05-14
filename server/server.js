@@ -5,8 +5,8 @@ const cors = require('cors');
 const app = express();
 const db = require("./Database/index.js");
 const db_ft = require("./Database/index_family_tree.js");
-const db_gene = require("./Database/index_gene.js");
 const db_cattery = require("./Database/index_cattery.js");
+const db_gene = require("./Database/index_gene.js");
 
 app.use(express.json());
 
@@ -20,12 +20,11 @@ app.use("/breeder_dashboard", require("./routes/parent_dashboard"));
 app.use("/breeder_dashboard", require("./routes/admin_dashboard"));
 //--------------------------------------------------------------------------------------
 // Gene Calculator
-app.get("/api/v1/genecalculator", async (req, res) => {
+app.post("/api/v1/genecalculator", async (req, res) => {
     try{
-        const blood_result = await db_gene.query("SELECT blood_type_child FROM blood_type WHERE blood_type_sire = $1 AND blood_type_dam = $2", [req.body.blood_sire, req.body.blood_dam]);
-        const pdk_result = await db_gene.query("SELECT pdk1_child_result FROM PKD1 WHERE pdk1_sire_result = $1 AND pdk1_dam_result = $2", [req.body.pdk_sire, req.body.pdk_dam]);
-        const hcm_result = await db_gene.query("SELECT HCM_child_result FROM HCM WHERE HCM_sire_result = $1 AND HCM_dam_result = $2", [req.body.hcm_sire, req.body.hcm_dam]);
-
+        const blood_result = await db.query("SELECT blood_type_child FROM blood_type WHERE blood_type_sire = $1 AND blood_type_dam = $2", [req.body[0], req.body[1]]);
+        const pdk_result = await db.query("SELECT pdk1_child_result FROM PKD1 WHERE pdk1_sire_result = $1 AND pdk1_dam_result = $2", [req.body[2], req.body[3]]);
+        const hcm_result = await db.query("SELECT HCM_child_result FROM HCM WHERE HCM_sire_result = $1 AND HCM_dam_result = $2", [req.body[4], req.body[5]]);
         res.json({
             blood_type: blood_result.rows[0],
             pdk_result: pdk_result.rows[0],
@@ -42,13 +41,14 @@ app.get("/api/v1/cats", async (req, res) => {
     try{
         const results = await db.query("SELECT * FROM cat");
         console.log(results);
-        res.status(200).json({
-            status:"success",
-            results: results.rows.length, 
-            data:{
-                cat: results.rows,
-            },
-        })
+        res.json(results.rows)
+        // res.status(200).json({
+        //     status:"success",
+        //     results: results.rows.length, 
+        //     data:{
+        //         cat: results.rows,
+        //     },
+        // })
     } catch(err){
         console.log(err);
     }
@@ -90,13 +90,14 @@ app.get("/api/v1/cats", async (req, res) => {
 
 // create a new breed cat, for breeder only (will also update cat family tree table)
 app.post("/api/v1/cats/create_breed", async (req, res) => {
+    console.log("hello hello")
     try{
         if((await db.query("SELECT certi_num FROM cat WHERE certi_num = $1", [req.body.certi_num])).rows[0]){
             res.send("Cat already exists.")
         } else {
             result = req.body;
             const results = await db.query("INSERT INTO breed_cat (cur_owner_cattery, certi_num, title, cat_reg_name, cat_name, breed, sex, birth_date, sire_name, dam_name, retire_statue, sale_status) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)", 
-            [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name, req.body.retire_statue, req.body.sale_status])
+            [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name, req.body.retire_status, req.body.sale_status])
         }
             res.status(201).json({
                 status: "success",
@@ -173,10 +174,10 @@ app.post("/api/v1/cats/create_cat", async (req, res) => {
 });
 
 // update a breed cat
-app.put("/api/v1/cats/update_breed", async (req, res) => {
+app.put("/api/v1/cats/update_breed/:id", async (req, res) => {
     try{
         const results = await db.query("UPDATE breed_cat SET cur_owner_cattery = $1, certi_num = $2, title = $3, cat_reg_name = $4, cat_name = $5, breed = $6, sex = $7, birth_date = $8, sire_name = $9, dam_name = $10, sale_status = $11, retire_statue = $12 WHERE certi_num = $13",
-        [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name,  req.body.sale_status, req.body.retire_statue, req.body.certi_num])
+        [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name,  req.body.sale_status, req.body.retire_statue, req.params.id])
         res.status(200).json({
             status: "success"
         })
@@ -270,6 +271,17 @@ app.get("/api/v1/cats/gettree", async (req, res) => {
 })
 //--------------------------------------------------------------------------------------
 // cattery routes 
+// get all catteries
+app.get("/api/v1/catteries", async (req, res) => {
+    try{
+        const results = await db.query("SELECT * FROM cattery");
+        console.log(results);
+        res.json(results.rows)
+    } catch(err){
+        console.log(err);
+    }
+})
+
 // update cattery info
 app.put("/api/v1/cattery", async (req, res) => {
     try{

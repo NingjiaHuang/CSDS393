@@ -1,6 +1,12 @@
 import React,{Fragment, useState} from 'react';
+import {Modal, Button} from 'react-bootstrap';
 
-const EditCat = ({cat}) =>{
+const EditCat = ({cat}, {setAuth}) =>{
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+
     const [inputs, setInputs] = useState({
         certi_num: "",
         cat_name: "",
@@ -19,8 +25,9 @@ const EditCat = ({cat}) =>{
         e.preventDefault();
         try{
             const body = {certi_num, cat_name, title, cat_reg_name, sale_status};
-            const response = await fetch(`http://localhost:4020/api/v1/cats/${cat.certi_num}`,{
-                method:"PUT",
+            console.log(body)
+            const response = await fetch(`http://localhost:4020/api/v1/cats/update_cat/${cat.certi_num}`,{
+                method:"PATCH",
                 headers: {"Content-type": "application/json"},
                 body: JSON.stringify(body)
             });
@@ -35,12 +42,11 @@ const EditCat = ({cat}) =>{
     return(
         <Fragment>
 
-            <button type="button" 
+            <Button type="button" 
             class="btn btn-warning" 
-            data-toggle="modal" 
-            data-target={`#id${cat.certi_num}`}>
+            onClick={handleShow}>
             Edit
-            </button>
+            </Button>
 
             {/*
                 id = id10
@@ -49,23 +55,12 @@ const EditCat = ({cat}) =>{
             */}
             
             
-            <div class="modal" id={`id${cat.certi_num}`} 
-            onClick={() => setInputs(cat.certi_num, cat.cat_name, cat.title, cat.cat_reg_name, cat.sale_status)}>
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Cat</h4>
-                    <button type="button" class="close" data-dismiss="modal" 
-                     onClick={() => setInputs(cat.certi_num, cat.cat_name, cat.title, cat.cat_reg_name, cat.sale_status)}>
-                        &times;
-                    </button>
-                </div>
-
-
-                <div class="modal-body">
-                    <form>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                <Modal.Title>Edit Cat</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <form onSubmit={updateCatInfo}>
                         <label>Certificate number: </label>
                         <input type="text" 
                         name="certi_num"    
@@ -102,27 +97,19 @@ const EditCat = ({cat}) =>{
                         placeholder={cat.sale_status} 
                         onChange={e => onChange(e)}
                         className="form-control my-2"/>
-
-                        <button type="button" class="btn btn-warning" 
-                        data-dismiss="modal"
-                        onClick ={e => updateCatInfo(e)}>
-                            Edit
-                        </button>
                  </form>
-                </div>
+                </Modal.Body>
 
-
-                <div class="modal-footer">
-                    
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"
-                     onClick={() => setInputs(cat.certi_num, cat.cat_name, cat.title, cat.cat_reg_name, cat.sale_status)}>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
                         Close
-                    </button>
-                </div>
+                    </Button>
+                    <Button variant="primary" onClick={updateCatInfo}>
+                        Save Changes
+                    </Button>
+                </Modal.Footer>
 
-                </div>
-            </div>
-            </div>
+                </Modal>
         </Fragment>
     )
 }

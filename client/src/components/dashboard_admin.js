@@ -1,4 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
+import Card from "./Card/Card"
+import manage from "../img/manageaccount.png"
 
 const AdminDashboard = ({setAuth}) => {
 
@@ -29,6 +31,7 @@ const AdminDashboard = ({setAuth}) => {
         <Fragment>
             <h1>Administrator Dashboard {name}</h1>
             <button className="btn btn-primary" onClick={e => logout(e)}>Logout</button>
+            <Card title='Manage Account' imageUrl={manage} body='Manage existing breeder and parent accounts.' button="Manage Account" url="/manage_user_account"/>
         </Fragment>
     )
 }

@@ -3,8 +3,9 @@ import React, {Fragment, useEffect, useState} from 'react';
 import mock_data from "../MOCK_DATA.json"
 import EditCat from "./EditCat"
 import AddCat from "./AddCat"
+import e from 'cors';
 
-const ListCat = () =>{
+const ListCat = ({setAuth}) =>{
     const[searchTerm, setSearchTerm] = useState("")
     const[cats, setCats] = useState([]);
 
@@ -14,19 +15,21 @@ const ListCat = () =>{
             const deleteCat = await fetch(`http://localhost:4020/api/v1/cats/${id}`,{
                 method: "DELETE"
             });
-            setCats(cats.filter(cat => cat.certi_num !== id))
+            setCats(Object.values(cats).filter(cat => cat.certi_num !== id))
         }catch (err){
             console.error(err.message);
         }
     }
 
     const getCats = async() => {
+        console.log("executed")
         try{
-            
             const response = await fetch("http://localhost:4020/api/v1/cats")
             const jsonData = await response.json()
+            console.log(typeof(jsonData[0]))
+            
             setCats(jsonData);
-
+            // console.log(Object.values(cats))
         } catch (err){
             console.error(err.message);
         }
@@ -54,21 +57,22 @@ const ListCat = () =>{
                 </tr>
             </thead>
             <tbody>
-            {mock_data.filter((val) =>{  //if get all catteries completed, change "mock_data" to catteries
+            
+            {Object.values(cats).filter((val) =>{  //if get all catteries completed, change "mock_data" to catteries
                   if (searchTerm == ""){
                     return val
-                  } else if (val.cattery_name.toLowerCase().includes(searchTerm.toLowerCase()) ){
+                  } else if (val.cat_name.toLowerCase().includes(searchTerm.toLowerCase()) ){
                     return val
                   }
               }
               ).map((val, key) => (
                   <tr key={key}>
-                      <td>{val.cattery_name}</td>
-                      <td>{val.owner_name}</td>
+                      <td>{val.certi_num}</td>
+                      <td>{val.cat_name}</td>
                         <td><EditCat  cat = {val}/></td>
                     <td>
                         <button className="btn btn-danger"
-                        onClick={() => deleteCat(val.cattery_name)}>Delete</button>
+                        onClick={() => deleteCat(val.certi_num)}>Delete</button>
                     </td>
                 </tr>
             ))
