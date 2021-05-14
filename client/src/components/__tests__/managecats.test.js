@@ -2,7 +2,6 @@ import {render, screen, fireEvent, cleanup} from '@testing-library/react';
 import AddBCat, {onChange} from '../ManageCats/AddBCat';
 import AddPCat from '../ManageCats/AddPCat';
 import AddKitten from '../ManageCats/AddKitten';
-import EditCat from '../ManageCats/EditCat';
 import ListCat from '../ManageCats/ListCat';
 import AddCat from '../ManageCats/AddCat'
 import { shallow, configure  } from 'enzyme';
@@ -12,6 +11,7 @@ import '@testing-library/jest-dom/extend-expect';
 import ManageCatsBreeder from '../ManageCatsBreeder';
 import ManageCatsParent from '../ManageCatsParent';
 import Adapter from 'enzyme-adapter-react-16';
+import EditCat from '../ManageCats/EditCat';
 
 configure({ adapter: new Adapter() })
 afterEach(() =>{
@@ -106,4 +106,15 @@ describe("Breeder clicks", () => {
         expect(wrapper.find('Modal')).toHaveLength(1);
       });
 
+      test('click edit button ', () => {
+        const mockOnClick = jest.fn()
+        const cat = {certi_num:"111", cat_name:"test", title:"admin", cat_reg_name:"test@test.com", sale_status:"NFS"}
+        const { getByTestId } = render(<EditCat cat={cat} onClick={mockOnClick()} />)
+        const clickIndicator = getByTestId('showbtn')
+        fireEvent.click(clickIndicator)
+        expect(mockOnClick).toHaveBeenCalledTimes(1)
+    })
+
+    
+    
 

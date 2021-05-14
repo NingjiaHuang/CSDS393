@@ -41,3 +41,23 @@ test('add an admin should render react-modal', () => {
     const wrapper = shallow(<AddAAccount />);
     expect(wrapper.find('Modal')).toHaveLength(1);
   });
+
+  test('click add admin button ', () => {
+    const mockOnClick = jest.fn()
+    const { getByTestId } = render(<AddAAccount onClick={mockOnClick()} />)
+    const clickIndicator = getByTestId('showBtn')
+    fireEvent.click(clickIndicator)
+    expect(mockOnClick).toHaveBeenCalledTimes(1)
+
+})
+
+test('click edit button ', () => {
+    const mockOnClick = jest.fn()
+    const account = {username:"test", user_password:"test", account_type:"admin", reg_email:"test@test.com", reg_phone:"1234"}
+    const { getByTestId } = render(<EditAccount account={account} onClick={mockOnClick()} />)
+    const clickIndicator = getByTestId('showbtn')
+    fireEvent.click(clickIndicator)
+    expect(mockOnClick).toHaveBeenCalledTimes(1)
+})
+
+
