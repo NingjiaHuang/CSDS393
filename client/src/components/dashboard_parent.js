@@ -31,11 +31,11 @@ const ParentDashboard = ({setAuth}) => {
     return (
         <Fragment>
             <h1>Parent Dashboard {name}</h1>
-            <button className="btn btn-primary" onClick={e => logout(e)}>Logout</button>
-            <Card title='View Cat Info' imageUrl={edit} body='View existing cat information in the database.' button="Search Cat" url="/manage_cat_parent"/>
-            <Card title='Gene Calculator' imageUrl={gene} body='Get info of potential genes of kitten.' button="Gene Calculator" url="/gene_calc"/>
-            <Card title='Family Tree' imageUrl={tree} body='View the family tree of a cat.' button="Family Tree" url="/family_tree_parent"/>
-            <Card title='Search Cattery' imageUrl={cattery} body='Search the catteries who use our system.' button="Search Cattery" url="/search_cattery"/>        
+            <button data-testid ="logoutbtn" className="btn btn-primary" onClick={e => logout(e)}>Logout</button>
+            <Card title='View Cat Info' imageUrl={edit} body='View existing cat information in the database.'  button="Search Cat" url="/manage_cat_parent"/>
+            <Card title='Gene Calculator' imageUrl={gene} body='Get info of potential genes of kitten.'  button="Gene Calculator" url="/gene_calc"/>
+            <Card title='Family Tree' imageUrl={tree} body='View the family tree of a cat.'  button="Family Tree" url="/family_tree_parent"/>
+            <Card title='Search Cattery' imageUrl={cattery} body='Search the catteries who use our system.'  button="Search Cattery" url="/search_cattery"/>        
             </Fragment>
     )
 }
