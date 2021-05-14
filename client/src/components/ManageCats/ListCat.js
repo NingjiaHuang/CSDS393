@@ -25,9 +25,10 @@ const ListCat = ({setAuth}) =>{
         try{
             const response = await fetch("http://localhost:4020/api/v1/cats")
             const jsonData = await response.json()
-            console.log(typeof(jsonData[0]))
+            
             
             setCats(jsonData);
+            console.log(jsonData)
             // console.log(Object.values(cats))
         } catch (err){
             console.error(err.message);

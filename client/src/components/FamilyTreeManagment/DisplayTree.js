@@ -8,8 +8,7 @@ const DisplayTree = () =>{
       try{
           const response = await fetch("http://localhost:4020/api/v1/get_all_nodes") //should be get tree of a certain cat
           const jsonData = await response.json()
-          setTree(jsonData);
-          console.log(tree)
+          setTree(Object.values(jsonData)[1]);
       } catch (err){
           console.error(err.message);
       }
@@ -46,8 +45,8 @@ const DisplayTree = () =>{
               }
               ).map((val, key) => (
                   <tr key={key}>
-                      <td>{val.cat_id}</td>
                       <td>{val.cat_name}</td>
+                      <td>{val.id}</td>
                       <td>{val.sire_path}</td>
                       <td>{val.dam_path}</td>
                       <td>
