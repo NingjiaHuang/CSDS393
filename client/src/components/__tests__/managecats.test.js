@@ -1,17 +1,19 @@
 import {render, screen, fireEvent, cleanup} from '@testing-library/react';
-import AddBCat from '../ManageCats/AddBCat';
+import AddBCat, {onChange} from '../ManageCats/AddBCat';
 import AddPCat from '../ManageCats/AddPCat';
 import AddKitten from '../ManageCats/AddKitten';
 import EditCat from '../ManageCats/EditCat';
 import ListCat from '../ManageCats/ListCat';
 import AddCat from '../ManageCats/AddCat'
-import { shallow } from 'enzyme';
-import Modal from 'react-modal';
+import { shallow, configure  } from 'enzyme';
+import {Modal,form} from 'react-bootstrap';
 import renderer from 'react-test-renderer'
 import '@testing-library/jest-dom/extend-expect';
 import ManageCatsBreeder from '../ManageCatsBreeder';
 import ManageCatsParent from '../ManageCatsParent';
+import Adapter from 'enzyme-adapter-react-16';
 
+configure({ adapter: new Adapter() })
 afterEach(() =>{
     cleanup();
 })
@@ -88,4 +90,20 @@ describe("Breeder clicks", () => {
         fireEvent.change(searchInputNode, {target:{value:'Ja'}});
         expect (searchInputNode.value).toMatch("Ja")
     })
+
+    test('add breeding cat renders react-modal', () => {
+        const wrapper = shallow(<AddBCat />);
+        expect(wrapper.find('Modal')).toHaveLength(1);
+      });
+
+      
+      test('add preagnant cat renders react-modal', () => {
+        const wrapper = shallow(<AddPCat />);
+        expect(wrapper.find('Modal')).toHaveLength(1);
+      });
+      test('add kitten renders react-modal', () => {
+        const wrapper = shallow(<AddKitten />);
+        expect(wrapper.find('Modal')).toHaveLength(1);
+      });
+
 
