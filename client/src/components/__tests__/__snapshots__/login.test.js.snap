@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot of breeder register 1`] = `
+Array [
+  <h1
+    className="text-center my-5"
+  >
+    Administrator Login
+  </h1>,
+  <form
+    onSubmit={[Function]}
+  >
+    <label>
+      Email: 
+    </label>
+    <input
+      className="form-control my-2"
+      name="reg_email"
+      onChange={[Function]}
+      placeholder="email"
+      type="email"
+      value=""
+    />
+    <label>
+      Password: 
+    </label>
+    <input
+      className="form-control my-2"
+      name="password"
+      onChange={[Function]}
+      placeholder="password"
+      type="password"
+      value=""
+    />
+    <button
+      className="btn btn-success btn-block"
+    >
+      Login
+    </button>
+  </form>,
+]
+`;
