@@ -292,6 +292,75 @@ describe("Breeder clicks", () => {
     
     })
 
+    test('click add pregnant button ', () => {
+        const mockOnClick = jest.fn()
+        const mockonsubmit = jest.fn()
+        const { getByTestId, getByLabelText } = render(<AddPCat onClick={mockOnClick()} onsubmit={mockonsubmit}/>)
+        const clickIndicator = getByTestId('showBtn')
+        //open the modal
+        fireEvent.click(clickIndicator)
+        expect(mockOnClick).toHaveBeenCalledTimes(1)
+    
+        //edit the modal form
+        const cattery = getByLabelText("Current owner cattery name:");
+        const owner = getByLabelText("Current owner:")
+        const cert = getByLabelText("Certificate number:")
+        const title = getByLabelText("Title:")
+        const reg_name = getByLabelText("Cat registered name:");
+        const name = getByLabelText("Cat preferred name:")
+        const breed = getByLabelText("Breed:")
+        const sex = getByLabelText("Sex:")
+        const birth = getByLabelText("Date of birth:");
+        const sire = getByLabelText("Sire:")
+        const dam = getByLabelText("Dam:")
+        const sale = getByLabelText("Sale status:")
+        const weight = getByLabelText("Current weight:")
+        const health = getByLabelText("Health condition:")
+
+    
+        fireEvent.change(cattery, {target:{value:"test"}})
+        fireEvent.change(owner, {target:{value:"test"}})
+        fireEvent.change(cert, {target:{value:"1"}})
+        fireEvent.change(title, {target:{value:"test"}})
+        fireEvent.change(reg_name, {target:{value:"test"}})
+        fireEvent.change(breed, {target:{value:"test"}})
+        fireEvent.change(sex, {target:{value:"test"}})
+        fireEvent.change(birth, {target:{value:"01/01/2021"}})
+        fireEvent.change(sire, {target:{value:"test"}})
+        fireEvent.change(dam, {target:{value:"test"}})
+        fireEvent.change(sale, {target:{value:"test"}})
+        fireEvent.change(weight, {target:{value:"1"}})
+        fireEvent.change(name, {target:{value:"test"}})
+        fireEvent.change(health, {target:{value:"test"}})
+
+
+    
+        expect(cattery.value).toMatch("test")
+        expect(owner.value).toMatch("test")
+        expect(cert.value).toMatch("1")
+        expect(title.value).toMatch("test")
+        expect(reg_name.value).toMatch("test")
+        expect(breed.value).toMatch("test")
+        expect(sex.value).toMatch("test")
+        expect(birth.value).toMatch("01/01/2021")
+        expect(sire.value).toMatch("test")
+        expect(dam.value).toMatch("test")
+        expect(sale.value).toMatch("test")
+        expect(health.value).toMatch("test")
+        expect(name.value).toMatch("test")
+        expect(weight.value).toMatch("1")
+
+
+    
+        //close the modal
+        const closebtn = getByTestId('closebtn')
+        fireEvent.click(closebtn)
+        expect(mockOnClick).toHaveBeenCalledTimes(1)
+        fireEvent.click(clickIndicator)
+        expect(mockOnClick).toHaveBeenCalledTimes(1)
+    
+    })
+
     
     
 
