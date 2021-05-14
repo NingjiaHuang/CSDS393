@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot of breeder register 1`] = `<register_breeder />`;
+
+exports[`matches snapshot of parent register 1`] = `<register_parent />`;

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot of search cattery 1`] = `
+Array [
+  " ",
+  <input
+    className="form-control"
+    data-testid="searchcattery"
+    onChange={[Function]}
+    placeholder="search cattery here"
+    type="text"
+  />,
+  <table
+    class="table mt-5 text-center"
+  >
+    <thead>
+      <tr>
+        <th>
+          Cattery Name
+        </th>
+        <th>
+          Owner Name
+        </th>
+      </tr>
+    </thead>
+    <tbody />
+  </table>,
+]
+`;

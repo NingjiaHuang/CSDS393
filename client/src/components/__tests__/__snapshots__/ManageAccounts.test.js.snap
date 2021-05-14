@@ -1,0 +1,156 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot of add  account 1`] = `
+<div
+  className="mx-auto"
+>
+  <table
+    class="mx-auto"
+    size="sm"
+  >
+    <thead>
+      <th>
+        <div>
+          <button
+            className="btn btn-info"
+            data-testid="showBtn"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            Add an admin account
+          </button>
+        </div>
+      </th>
+    </thead>
+  </table>
+</div>
+`;
+
+exports[`matches snapshot of add an admin account 1`] = `
+<div>
+  <button
+    className="btn btn-info"
+    data-testid="showBtn"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    Add an admin account
+  </button>
+</div>
+`;
+
+exports[`matches snapshot of list account 1`] = `
+Array [
+  " ",
+  <input
+    className="form-control"
+    data-testid="searchAccount"
+    onChange={[Function]}
+    placeholder="search accounts by username here"
+    type="text"
+  />,
+  <table
+    class="table mt-5 text-center"
+  >
+    <thead>
+      <tr>
+        <th>
+          Username
+        </th>
+        <th>
+          Account type
+        </th>
+        <th>
+          Email
+        </th>
+        <th>
+          Edit
+        </th>
+        <th>
+          Delete
+        </th>
+      </tr>
+    </thead>
+    <tbody />
+  </table>,
+]
+`;
+
+exports[`matches snapshot of manage account 1`] = `
+<div
+  className="container"
+  data-test="container"
+>
+  <div
+    className="mx-auto mt-5"
+  >
+    <h2
+      className="text-center"
+    >
+      Manage system accounts
+    </h2>
+    <div
+      className="mx-auto"
+    >
+      <table
+        class="mx-auto"
+        size="sm"
+      >
+        <thead>
+          <th>
+            <div>
+              <button
+                className="btn btn-info"
+                data-testid="showBtn"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                Add an admin account
+              </button>
+            </div>
+          </th>
+        </thead>
+      </table>
+    </div>
+    <div
+      className="mt-3"
+    >
+       
+      <input
+        className="form-control"
+        data-testid="searchAccount"
+        onChange={[Function]}
+        placeholder="search accounts by username here"
+        type="text"
+      />
+      <table
+        class="table mt-5 text-center"
+      >
+        <thead>
+          <tr>
+            <th>
+              Username
+            </th>
+            <th>
+              Account type
+            </th>
+            <th>
+              Email
+            </th>
+            <th>
+              Edit
+            </th>
+            <th>
+              Delete
+            </th>
+          </tr>
+        </thead>
+        <tbody />
+      </table>
+    </div>
+  </div>
+</div>
+`;
