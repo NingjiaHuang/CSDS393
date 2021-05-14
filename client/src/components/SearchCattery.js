@@ -7,7 +7,6 @@ const SearchCattery = ({setAuth}) =>{
   const[catteries, setCatteries] = useState([]);
   const getCatteries = async() => {
       try{
-          
           const response = await fetch("http://localhost:4020/api/v1/catteries")
           const jsonData = await response.json()
           setCatteries(jsonData);

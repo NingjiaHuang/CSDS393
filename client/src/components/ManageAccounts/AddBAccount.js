@@ -65,12 +65,6 @@ const AddBAccount = () =>{
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Account type: </label>
-                            <input 
-                            placeholder = "breeder"
-                            type="text" 
-                            name="account_type"  
-                            className="form-control my-2"/>
 
                             <label>Email: </label>
                             <input 

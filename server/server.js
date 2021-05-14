@@ -173,50 +173,11 @@ app.post("/api/v1/cats/create_cat", async (req, res) => {
     }
 });
 
-// update a breed cat
-app.put("/api/v1/cats/update_breed/:id", async (req, res) => {
-    try{
-        const results = await db.query("UPDATE breed_cat SET cur_owner_cattery = $1, certi_num = $2, title = $3, cat_reg_name = $4, cat_name = $5, breed = $6, sex = $7, birth_date = $8, sire_name = $9, dam_name = $10, sale_status = $11, retire_statue = $12 WHERE certi_num = $13",
-        [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name,  req.body.sale_status, req.body.retire_statue, req.params.id])
-        res.status(200).json({
-            status: "success"
-        })
-    }catch(err){
-        console.log(err)
-    }
-});
-
-// update a pregnant cat
-app.put("/api/v1/cats/update_preg", async (req, res) => {
-    try{
-        const results = await db.query("UPDATE preg_cat SET cur_owner_cattery = $1, certi_num = $2, title = $3, cat_reg_name = $4, cat_name = $5, breed = $6, sex = $7, birth_date = $8, sire_name = $9, dam_name = $10, sale_status = $11, weight = $12, health_cond = $13 WHERE certi_num = $14",
-        [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name,  req.body.sale_status, req.body.weight, req.body.health_cond, req.body.certi_num])
-        res.status(200).json({
-            status: "success"
-        })
-    }catch(err){
-        console.log(err)
-    }
-});
-
-// update a kitten
-app.put("/api/v1/cats/update_kitten", async (req, res) => {
-    try{
-        const results = await db.query("UPDATE kitten SET cur_owner_cattery = $1, certi_num = $2, title = $3, cat_reg_name = $4, cat_name = $5, breed = $6, sex = $7, birth_date = $8, sire_name = $9, dam_name = $10, sale_status = $11, weight = $12, health_cond = $13, vaccination_cond = $14 WHERE certi_num = $15",
-        [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name,  req.body.sale_status, req.body.weight, req.body.health_cond, req.body.vaccination_cond, req.body.certi_num])
-        res.status(200).json({
-            status: "success"
-        })
-    }catch(err){
-        console.log(err)
-    }
-});
-
 // update a cat
-app.put("/api/v1/cats/update_cat", async (req, res) => {
+app.patch("/api/v1/cats/update_cat", async (req, res) => {
     try{
-        const results = await db.query("UPDATE cat SET cur_owner_cattery = $1, certi_num = $2, title = $3, cat_reg_name = $4, cat_name = $5, breed = $6, sex = $7, birth_date = $8, sire_name = $9, dam_name = $10, sale_status = $11 WHERE certi_num = $12",
-        [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name,  req.body.sale_status, req.body.certi_num])
+        const results = await db.query("UPDATE cat SET certi_num = $1, cat_name = $2, title = $3, cat_reg_name = $4, sale_status=$5 WHERE certi_num = $6",
+        [req.body.certi_num, req.body.cat_name, req.body.title, req.body.cat_reg_name, req.body.sale_status, req.body.certi_num])
         res.status(200).json({
             status: "success"
         })

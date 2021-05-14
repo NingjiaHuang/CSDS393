@@ -26,13 +26,12 @@ const EditCat = ({cat}, {setAuth}) =>{
         try{
             const body = {certi_num, cat_name, title, cat_reg_name, sale_status};
             console.log(body)
-            const response = await fetch(`http://localhost:4020/api/v1/cats/update_cat/${cat.certi_num}`,{
+            const response = await fetch("http://localhost:4020/api/v1/cats/update_cat",{
                 method:"PATCH",
                 headers: {"Content-type": "application/json"},
                 body: JSON.stringify(body)
             });
-
-            window.location = "/";
+            window.location = "/manage_cat_breeder";
         }catch(err){
             console.error(err.message)
         }

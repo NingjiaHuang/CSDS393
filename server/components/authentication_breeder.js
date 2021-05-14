@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const db = require("../Database/index_user.js");
+const db = require("../Database/index.js");
 const bcrypt = require('bcrypt');
 const jwtGenerator = require("../utils/jwtGenerator");
 const { Pool } = require("pg");
@@ -176,5 +176,27 @@ router.delete("/delete", (req, res)=>{
     }
 })
 
+// update user info
+router.put("/update_account", async (req, res) => {
+    try{
+        const results = await db.query("UPDATE account SET username = $1, user_password = $2, account_type = $3, reg_email = $4, reg_phone = $5 WHERE reg_email = $6", 
+        [req.body.username, req.body.user_password, req.body.account_type, req.body.reg_email, req.body.reg_phone, req.body.reg_email])
+    }catch(err){
+        console.log(err)
+    }
+    res.status(200).json({
+        status: "success"
+    })
+});
+
+// get all accounts
+router.get("/all_accounts", async (req, res) => {
+    try{
+        const results = await db.query("SELECT * FROM account");
+        res.json(results.rows)
+    } catch(err){
+        console.log(err);
+    }
+})
 
 module.exports = router;

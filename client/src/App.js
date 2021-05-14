@@ -95,7 +95,7 @@ function App() {
               <Route exact path="/gene_calc" />
               <Route exact path="/family_tree" render={props => isAuthenticated ? <FamilyTree {...props} setAuth={setAuth}/>: <Redirect to="/login/parent"/>}/>
               <Route exact path="/search_cattery" render={props => isAuthenticated ? <Cattery {...props} setAuth={setAuth}/>: <Redirect to="/login/parent"/>}/>
-              <Route exact path="/manage_user_account" render={props => isAuthenticated ? <ManageAccounts {...props} setAuth={setAuth}/>: <Redirect to="/login/parent"/>}/>
+              <Route exact path="/manage_user_account" render={props => isAuthenticated ? <ManageAccounts {...props} setAuth={setAuth}/>: <Redirect to="/login/admin"/>}/>
             </Switch>
           </div>
 
