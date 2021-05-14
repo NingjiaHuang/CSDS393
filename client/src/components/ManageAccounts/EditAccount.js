@@ -54,39 +54,43 @@ const EditAccount = ({account}) =>{
                 </Modal.Header>
                 <Modal.Body>
                     <form onSubmit={updateAccountInfo}>
-                        <label>Username: </label>
+                        <label htmlFor="username">Username: </label>
                         <input type="text" 
                         name="username"    
+                        id="username"
                         placeholder= {account.username}
                         onChange={e => onChange(e)}
                         className="form-control my-2"/>
 
-                        <label>Password: </label>
+                        <label htmlFor="password">Password: </label>
                         <input 
                         type="text" 
+                        id="password"
                         name="password"  
                         placeholder={account.user_password}  
                         onChange={e => onChange(e)}
                         className="form-control my-2"/>
 
-                        <label>Account Type: </label>
+                        <label  htmlFor="account_type">Account Type: </label>
                         <input 
                         type="text" 
+                        id="account_type"
                         name="account_type"  
                         placeholder={account.account_type}  
                         onChange={e => onChange(e)}
                         className="form-control my-2"/>
 
-                        <label>Phone: </label>
+                        <label htmlFor="reg_phone">Phone: </label>
                         <input type="text" 
                         name="reg_phone"   
+                        id="reg_phone"
                         placeholder={account.reg_phone} 
                         onChange={e => onChange(e)}
                         className="form-control my-2"/>
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button data-testid ="closebtn" variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
                     <Button variant="primary" onClick={updateAccountInfo}>

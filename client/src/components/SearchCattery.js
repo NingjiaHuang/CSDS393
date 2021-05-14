@@ -2,7 +2,7 @@ import React, {Fragment, useState, useEffect} from 'react'
 import mock_data from "./MOCK_DATA.json"
 import { Button } from 'react-bootstrap';
 
-const SearchCattery = ({setAuth}) =>{
+const SearchCattery = () =>{
   const[searchTerm, setSearchTerm] = useState("")
   const[catteries, setCatteries] = useState([]);
   const getCatteries = async() => {

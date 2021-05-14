@@ -10,89 +10,113 @@ Array [
   <form
     onSubmit={[Function]}
   >
-    <label>
+    <label
+      htmlFor="name"
+    >
       Name: 
     </label>
     <input
       className="form-control my-2"
+      id="name"
       name="username"
       onChange={[Function]}
       placeholder="name"
       type="text"
       value=""
     />
-    <label>
+    <label
+      htmlFor="password"
+    >
       Password: 
     </label>
      
     <input
       className="form-control my-2"
+      id="password"
       name="password"
       onChange={[Function]}
       placeholder="password"
       type="password"
       value=""
     />
-    <label>
+    <label
+      htmlFor="reg_email"
+    >
       Email: 
     </label>
     <input
       className="form-control my-3"
+      id="reg_email"
       name="reg_email"
       onChange={[Function]}
       placeholder="email"
       type="email"
       value=""
     />
-    <label>
+    <label
+      htmlFor="reg_phone"
+    >
       Phone Number: 
     </label>
     <input
       className="form-control my-3"
+      id="reg_phone"
       name="reg_phone"
       onChange={[Function]}
       placeholder="phone"
       type="text"
       value=""
     />
-    <label>
+    <label
+      htmlFor="cattery_name"
+    >
       Cattery Name: 
     </label>
     <input
       className="form-control my-2"
+      id="cattery_name"
       name="cattery_name"
       onChange={[Function]}
       placeholder="cattery name"
       type="text"
       value=""
     />
-    <label>
+    <label
+      htmlFor="organization"
+    >
       Organization: 
     </label>
     <input
       className="form-control my-2"
+      id="organization"
       name="organization"
       onChange={[Function]}
       placeholder="organization"
       type="text"
       value=""
     />
-    <label>
+    <label
+      htmlFor="owner_name"
+    >
       Owner Name: 
     </label>
     <input
       className="form-control my-2"
+      id="owner_name"
       name="owner_name"
       onChange={[Function]}
       placeholder="owner name"
       type="text"
       value=""
     />
-    <label>
+    <label
+      htmlFor="city"
+    >
       City: 
     </label>
     <input
       className="form-control my-2"
+      id="city"
       name="city"
       onChange={[Function]}
       placeholder="city"
@@ -118,56 +142,71 @@ Array [
   <form
     onSubmit={[Function]}
   >
-    <label>
+    <label
+      htmlFor="name"
+    >
       Name: 
     </label>
     <input
       className="form-control my-2"
+      id="name"
       name="username"
       onChange={[Function]}
       placeholder="name"
       type="text"
       value=""
     />
-    <label>
+    <label
+      htmlFor="password"
+    >
       Password: 
     </label>
      
     <input
       className="form-control my-2"
+      id="password"
       name="password"
       onChange={[Function]}
       placeholder="password"
       type="password"
       value=""
     />
-    <label>
+    <label
+      htmlFor="reg_email"
+    >
       Email: 
     </label>
     <input
       className="form-control my-3"
+      id="reg_email"
       name="reg_email"
       onChange={[Function]}
       placeholder="email"
       type="email"
       value=""
     />
-    <label>
+    <label
+      htmlFor="reg_phone"
+    >
       Phone Number: 
     </label>
     <input
       className="form-control my-3"
+      id="reg_phone"
       name="reg_phone"
       onChange={[Function]}
       placeholder="phone"
       type="text"
       value=""
     />
-    <label>
+    <label
+      htmlFor="preferred_name"
+    >
       Preferred Name: 
     </label>
     <input
       className="form-control my-2"
+      id="preferred_name"
       name="preferred_name"
       onChange={[Function]}
       placeholder="preferred name"

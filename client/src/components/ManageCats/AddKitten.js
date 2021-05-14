@@ -57,102 +57,118 @@ const AddKitten = ({setAuth}) =>{
                     </Modal.Header>
                     <Modal.Body>
                         <form>
-                            <label>Current owner cattery name: </label>
+                        <label htmlFor="cur_owner_cattery">Current owner cattery name: </label>
                             <input type="text" 
                             name="cur_owner_cattery"    
+                            id="cur_owner_cattery"
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Current owner: </label>
+                            <label htmlFor="cur_owner">Current owner: </label>
                             <input 
                             type="text" 
-                            name="cur_owner_cattery"  
+                            name="cur_owner" 
+                            id="cur_owner"
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Certificate number: </label>
+                            <label htmlFor="certi_num">Certificate number: </label>
                             <input 
                             type="text" 
                             name="certi_num"  
+                            id="certi_num"
+
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Title: </label>
+                            <label htmlFor="title">Title: </label>
                             <input 
                             type="text" 
-                            name="title"   
+                            name="title"  
+                            id="title" 
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Cat registered name: </label>
+                            <label htmlFor="cat_reg_name">Cat registered name: </label>
                             <input type="text" 
-                            name="cat_reg_name"   
+                            name="cat_reg_name"
+                            id="cat_reg_name"   
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Cat preferred name: </label>
+                            <label htmlFor="cat_name">Cat preferred name: </label>
                             <input type="text" 
                             name="cat_name"   
+                            id="cat_name"
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Breed: </label>
+                            <label htmlFor="breed">Breed: </label>
                             <input type="text" 
                             name="breed"   
+                            id="breed"
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Sex: </label>
+                            <label htmlFor="sex">Sex: </label>
                             <input type="text" 
                             name="sex"   
+                            id="sex"
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Date of birth: </label>
+                            <label htmlFor="birth_date">Date of birth: </label>
                             <input type="text" 
                             name="birth_date"   
+                            id="birth_date"
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Sire: </label>
+                            <label htmlFor="sire_name">Sire: </label>
                             <input type="text" 
-                            name="sire_name"   
+                            name="sire_name" 
+                            id="sire_name"  
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Dam: </label>
+                            <label htmlFor="dam_name">Dam: </label>
                             <input type="text" 
-                            name="dam_name"   
+                            name="dam_name" 
+                            id="dam_name"  
                             className="form-control my-2"
                             onChange={e => onChange(e)}/> 
 
-                            <label>Sale status: </label>
+                            <label htmlFor="sale_status">Sale status: </label>
                             <input type="text" 
-                            name="sale_status"   
+                            name="sale_status"  
+                            id="sale_status" 
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Current weight: </label>
+                            <label htmlFor="weight">Current weight: </label>
                             <input type="text" 
+                            id="weight"
                             name="weight"   
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Health condition: </label>
+                            <label htmlFor="health_cond">Health condition: </label>
                             <input type="text" 
-                            name="health_cond"   
+                            name="health_cond"  
+                            id="health_cond"    
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Vaccinations: </label>
+                            <label htmlFor="vaccination_cond">Vaccination condition: </label>
                             <input type="text" 
-                            name="vaccination_cond"   
+                            name="vaccination_cond"  
+                            id="vaccination_cond"    
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
                         </form>
                     </Modal.Body>
                     <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button variant="secondary" data-testid="closebtn" onClick={handleClose}>
                         Close
                     </Button>
                     <Button variant="warning" onClick={onSubmitForm}>

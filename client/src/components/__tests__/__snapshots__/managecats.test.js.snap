@@ -129,6 +129,34 @@ Array [
 ]
 `;
 
+exports[`matches snapshot of list cats 2`] = `
+Array [
+  " ",
+  <input
+    className="form-control"
+    data-testid="searchCat"
+    onChange={[Function]}
+    placeholder="search cats by name here"
+    type="text"
+  />,
+  <table
+    class="table mt-5 text-center"
+  >
+    <thead>
+      <tr>
+        <th>
+          Certificate Number
+        </th>
+        <th>
+          Cat Name
+        </th>
+      </tr>
+    </thead>
+    <tbody />
+  </table>,
+]
+`;
+
 exports[`matches snapshot of manage cats of breeder 1`] = `
 <div
   className="container"

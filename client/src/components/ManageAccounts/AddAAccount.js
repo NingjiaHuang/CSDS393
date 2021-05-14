@@ -48,38 +48,41 @@ const AddAAccount = () =>{
                     </Modal.Header>
                     <Modal.Body>
                         <form onSubmit={onSubmitForm}>
-                            <label>Username: </label>
-                            <input type="text" 
+                        <label htmlFor="username">Username: </label>                            <input type="text" 
                             name="username"    
+                            id="username"
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Password: </label>
+                            <label htmlFor="password">Password: </label>
                             <input 
                             type="text" 
-                            name="password"  
+                            name="password" 
+                            id="password"
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Email: </label>
+                            <label htmlFor="reg_email">Email: </label>
                             <input 
                             type="text" 
-                            name="reg_email"   
+                            name="reg_email" 
+                            id="reg_email"
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Phone: </label>
+                            <label htmlFor="reg_phone">Phone: </label>
                             <input type="text" 
                             name="reg_phone"   
+                            id="reg_phone"
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
                         </form>
                     </Modal.Body>
                     <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button data-testid = "closebtn" variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="warning" onClick={onSubmitForm}>
+                    <Button data-testid="addbtn" variant="warning" onClick={onSubmitForm}>
                         Add
                     </Button>
                     </Modal.Footer>

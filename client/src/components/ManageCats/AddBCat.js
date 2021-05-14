@@ -59,103 +59,104 @@ const AddBcat = ({setAuth}) =>{
                     </Modal.Header>
                     <Modal.Body>
                         <form name="addcat" data-testid="addcat" onSubmit={onSubmitForm}>
-                            <label>Current owner cattery name: </label>
+                            <label htmlFor="cur_owner_cattery">Current owner cattery name: </label>
                             <input type="text" 
-                            data-testid="cur_owner_cattery"
                             name="cur_owner_cattery"    
+                            id="cur_owner_cattery"
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Current owner: </label>
+                            <label htmlFor="cur_owner">Current owner: </label>
                             <input 
                             type="text" 
-                            data-testid="cur_owner"
-                            name="cur_owner"  
+                            name="cur_owner" 
+                            id="cur_owner"
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Certificate number: </label>
+                            <label htmlFor="certi_num">Certificate number: </label>
                             <input 
                             type="text" 
-                            data-testid="certi_num"
                             name="certi_num"  
+                            id="certi_num"
+
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Title: </label>
+                            <label htmlFor="title">Title: </label>
                             <input 
                             type="text" 
                             name="title"  
-                            data-testid="title" 
+                            id="title" 
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Cat registered name: </label>
+                            <label htmlFor="cat_reg_name">Cat registered name: </label>
                             <input type="text" 
                             name="cat_reg_name"
-                            data-testid="cat_reg_name"   
+                            id="cat_reg_name"   
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Cat preferred name: </label>
+                            <label htmlFor="cat_name">Cat preferred name: </label>
                             <input type="text" 
                             name="cat_name"   
-                            data-testid="cat_name"
+                            id="cat_name"
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Breed: </label>
+                            <label htmlFor="breed">Breed: </label>
                             <input type="text" 
                             name="breed"   
-                            data-testid="breed"
+                            id="breed"
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Sex: </label>
+                            <label htmlFor="sex">Sex: </label>
                             <input type="text" 
                             name="sex"   
-                            data-testid="sex"
+                            id="sex"
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Date of birth: </label>
+                            <label htmlFor="birth_date">Date of birth: </label>
                             <input type="text" 
                             name="birth_date"   
-                            data-testid="birth_date"
+                            id="birth_date"
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Sire: </label>
+                            <label htmlFor="sire_name">Sire: </label>
                             <input type="text" 
                             name="sire_name" 
-                            data-testid="sire_name"  
+                            id="sire_name"  
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Dam: </label>
+                            <label htmlFor="dam_name">Dam: </label>
                             <input type="text" 
                             name="dam_name" 
-                            data-testid="dam_name"  
+                            id="dam_name"  
                             className="form-control my-2"
                             onChange={e => onChange(e)}/> 
 
-                            <label>Sale status: </label>
+                            <label htmlFor="sale_status">Sale status: </label>
                             <input type="text" 
                             name="sale_status"  
-                            data-testid="sale_status" 
+                            id="sale_status" 
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Retire status: </label>
+                            <label htmlFor="retire_status">Retire status: </label>
                             <input type="text" 
                             name="retire_status"
-                            data-testid="retire_status"   
+                            id="retire_status"   
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
                         </form>
                     </Modal.Body>
                     <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button data-testid = "closebtn" variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
                     <Button variant="warning" onClick={onSubmitForm}>
