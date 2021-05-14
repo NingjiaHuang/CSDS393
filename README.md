@@ -4,4 +4,4 @@ Cattery Management System.
 - @testing-library/react react-test-renderer --save -dev
 - @testing-library/react jest-dom --save -dev
 - enzyme
-- enzyme-adapter-react-15
+- enzyme-adapter-react-16
