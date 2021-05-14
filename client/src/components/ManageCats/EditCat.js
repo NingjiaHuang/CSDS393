@@ -9,10 +9,10 @@ const EditCat = ({cat}, {setAuth}) =>{
 
     const [inputs, setInputs] = useState({
         certi_num: cat.certi_num,
-        cat_name: "",
-        title: "",
-        cat_reg_name: "",
-        sale_status: "",
+        cat_name: cat.cat_name,
+        title: cat.title,
+        cat_reg_name: cat.cat_reg_name,
+        sale_status: cat.sale_status
     }); 
     const {certi_num, cat_name, title, cat_reg_name, sale_status} = inputs;
     const onChange = (e) => {
