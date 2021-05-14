@@ -1,5 +1,4 @@
 import React, {Fragment, useEffect, useState} from 'react';
-import mock_data from "../MOCK_DATA.json"
 import EditCat from "./EditCat"
 import AddCat from "./AddCat"
 import e from 'cors';

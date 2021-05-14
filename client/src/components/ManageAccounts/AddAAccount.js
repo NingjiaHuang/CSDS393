@@ -24,7 +24,7 @@ const AddAAccount = () =>{
         e.preventDefault();
         try{
             const body = {username, user_password,account_type, reg_email, reg_phone};
-            const response = await fetch("http://localhost:4020/api/v1/cats",{ // url needs update. need to add to breeding cat table
+            const response = await fetch("http://localhost:4020/auth/register/admin",{ // url needs update. need to add to breeding cat table
                 method:"Post",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)

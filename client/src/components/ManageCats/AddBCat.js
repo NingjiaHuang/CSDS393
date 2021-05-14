@@ -16,11 +16,11 @@ const AddBcat = ({setAuth}) =>{
         sire_name:"",
         dam_name:"",
         sale_status:"",
-        retire_status:"",
+        retire_statue:"",
     });
 
     const {cur_owner_cattery, cur_owner, certi_num, title, cat_reg_name, cat_name,
-        breed, sex, birth_date, sire_name, dam_name, sale_status,retire_status} = info;
+        breed, sex, birth_date, sire_name, dam_name, sale_status,retire_statue} = info;
         
     const onChange = (e) => {
         setInfo({...info, [e.target.name]:e.target.value})
@@ -34,7 +34,7 @@ const AddBcat = ({setAuth}) =>{
         e.preventDefault();
         try{
             const body = {cur_owner_cattery, cur_owner, certi_num, title, cat_reg_name, cat_name,
-                breed, sex, birth_date, sire_name, dam_name, sale_status, retire_status};
+                breed, sex, birth_date, sire_name, dam_name, sale_status, retire_statue};
 
             const response = await fetch("http://localhost:4020/api/v1/cats/create_breed", { // url needs update. need to add to breeding cat table
                 method: "POST",

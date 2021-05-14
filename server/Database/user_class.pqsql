@@ -130,6 +130,5 @@ INSERT INTO admini (username, user_password, account_type ,reg_email, reg_phone)
 INSERT INTO admini (username, user_password, account_type ,reg_email, reg_phone) VALUES ('ad2', 'ad2ad2', 'admin', 'admin2@gmail.com', '023445')
 
 SELECT * FROM breeder;
-
 SELECT * FROM potential_parents;
 

@@ -14,10 +14,10 @@ import AdminDashboard from "./components/dashboard_admin"
 import AdminLogin from "./components/login_admin"
 import ManageCatsBreeder from "./components/ManageCatsBreeder"
 import ManageCatsParent from "./components/ManageCatsParent"
-import GeneCalculator from "./components/GeneTable"
 import FamilyTree from "./components/FamilyTree"
 import Cattery from "./components/SearchCattery"
 import ManageAccounts from "./components/ManageAccounts"
+import Gene from "./components/Gene"
 
 toast.configure();
 
@@ -92,10 +92,11 @@ function App() {
               <Route exact path="/admin_dashboard" render={props => isAuthenticated ? <AdminDashboard {...props} setAuth={setAuth}/>: <Redirect to="/login/admin"/>}/>
               <Route exact path="/manage_cat_breeder" render={ManageCatsBreeder}/>
               <Route exact path="/manage_cat_parent" render={props => isAuthenticated ? <ManageCatsParent {...props} setAuth={setAuth}/>: <Redirect to="/login/parent"/>}/>
-              <Route exact path="/gene_calc" />
-              <Route exact path="/family_tree" render={props => isAuthenticated ? <FamilyTree {...props} setAuth={setAuth}/>: <Redirect to="/login/parent"/>}/>
+              <Route exact path="/family_tree" render={FamilyTree}/>
               <Route exact path="/search_cattery" render={props => isAuthenticated ? <Cattery {...props} setAuth={setAuth}/>: <Redirect to="/login/parent"/>}/>
               <Route exact path="/manage_user_account" render={ManageAccounts}/>
+              <Route exact path="/gene_calc" component={Gene}/>
+
             </Switch>
           </div>
 

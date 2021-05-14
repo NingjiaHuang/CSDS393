@@ -1,7 +1,7 @@
 import React,{Fragment, useState} from 'react';
 import {Modal, Button} from 'react-bootstrap';
 
-const EditCat = ({cat}, {setAuth}) =>{
+const EditCat = ({cat}) =>{
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -9,17 +9,15 @@ const EditCat = ({cat}, {setAuth}) =>{
 
     const [inputs, setInputs] = useState({
         certi_num: cat.certi_num,
-        cat_name: "",
-        title: "",
-        cat_reg_name: "",
-        sale_status: "",
-    }); 
+        cat_name: cat.cat_name,
+        title: cat.title,
+        cat_reg_name: cat.cat_reg_name,
+        sale_status: cat.sale_status
+    });
     const {certi_num, cat_name, title, cat_reg_name, sale_status} = inputs;
     const onChange = (e) => {
         setInputs({...inputs, [e.target.name]:e.target.value})
     }
-
-
     //update cat info function
     const updateCatInfo = async(e) =>{
         e.preventDefault();

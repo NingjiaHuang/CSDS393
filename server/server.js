@@ -90,14 +90,13 @@ app.get("/api/v1/cats", async (req, res) => {
 
 // create a new breed cat, for breeder only (will also update cat family tree table)
 app.post("/api/v1/cats/create_breed", async (req, res) => {
-    console.log("hello hello")
     try{
         if((await db.query("SELECT certi_num FROM cat WHERE certi_num = $1", [req.body.certi_num])).rows[0]){
             res.send("Cat already exists.")
         } else {
             result = req.body;
             const results = await db.query("INSERT INTO breed_cat (cur_owner_cattery, certi_num, title, cat_reg_name, cat_name, breed, sex, birth_date, sire_name, dam_name, retire_statue, sale_status) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)", 
-            [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name, req.body.retire_status, req.body.sale_status])
+            [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name, req.body.retire_statue, req.body.sale_status])
         }
             res.status(201).json({
                 status: "success",
@@ -216,7 +215,7 @@ app.put("/api/v1/cats/update_kitten", async (req, res) => {
 app.patch("/api/v1/cats/update_cat", async (req, res) => {
     try{
         const results = await db.query("UPDATE cat SET certi_num = $1, cat_name=$2, title = $3, cat_reg_name = $4, sale_status = $5 WHERE certi_num = $6",
-        [ req.body.certi_num, req.body.cat_name, req.body.title, req.body.cat_reg_name, req.body.sale_status, req.body.certi_num])
+        [ req.body.certi_num, req.body.user_password, req.body.title, req.body.cat_reg_name, req.body.sale_status, req.body.certi_num])
         res.status(200).json({
             status: "success"
         })

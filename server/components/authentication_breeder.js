@@ -48,7 +48,7 @@ router.post("/register/parent", validInfo, async(req, res) => {
         const salt = await bcrypt.genSalt(saltRound);
         const bcryptPassword = await bcrypt.hash(password, salt)
         // 4. Enter the new  user inside the database
-        newUser = await db.query("INSERT INTO potential_parents (username, user_password, account_type, reg_email, reg_phone, preferred_name) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *"
+        newUser = await db.query("INSERT INTO potential_parents (username, user_password, account_type, reg_email, reg_phone, preferred_name) VALUES ($1, $2, $3, $4, $5, $6) "
         , [username, bcryptPassword, account_type, reg_email, reg_phone, req.body.preferred_name]);
         // 5. generate jwt token for secure transaction of info and signature
         const token = jwtGenerator(newUser.rows[0].reg_email);
@@ -66,6 +66,7 @@ router.post("/register/admin", validInfo, async(req, res) => {
         // 2. check if user exists (by checking user email)
         const user = await db.query("SELECT * FROM admini WHERE reg_email = $1", [reg_email]);
         if(user.rows.length !== 0) {
+            console.log(user.rows[0])
             return res.status(401).json("User already exists.")
         }
         var newUser = null;
@@ -165,9 +166,9 @@ router.get("/is-verify", authorization, async (req, res) => {
 })
 
 // delete a user (for administrator only)
-router.delete("/delete", async (req, res)=>{
+router.delete("/delete", (req, res)=>{
     try {
-        const results = await db.query("DELETE FROM account where reg_email = $1", [req.body.reg_email])
+        const results = db.query("DELETE FROM account where reg_email = $1", [req.body.reg_email])
         res.status(204).json({
             status: "success"
         })
@@ -176,29 +177,27 @@ router.delete("/delete", async (req, res)=>{
     }
 })
 
-// update user info
-router.patch("/update_account", async (req, res) => {
-    try{
-        console.log(req.body.username)
-        const results = await db.query("UPDATE account SET username = $1, user_password = $2, account_type = $3, reg_phone = $4 WHERE reg_email = $5", 
-        [req.body.username, req.body.user_password, req.body.account_type,  req.body.reg_phone, req.body.reg_email])
-
-    }catch(err){
-        console.log(err)
-    }
-    res.status(200).json({
-        status: "success"
-    })
-});
-
-// get all accounts
 router.get("/all_accounts", async (req, res) => {
     try{
         const results = await db.query("SELECT * FROM account");
+        console.log(results);
         res.json(results.rows)
     } catch(err){
         console.log(err);
     }
 })
+
+// update an account
+router.patch("/update_account", async (req, res) => {
+    try{
+        const results = await db.query("UPDATE account SET username = $1, user_password=$2, account_type = $3, reg_phone = $4 WHERE reg_email = $5",
+        [req.body.username, req.body.user_password, req.body.account_type, req.body.reg_phone, req.body.reg_email])
+        res.status(200).json({
+            status: "success"
+        })
+    }catch(err){
+        console.log(err)
+    }
+});
 
 module.exports = router;

@@ -28,7 +28,7 @@ const BreederRegister = ({setAuth}) => {
         e.preventDefault();
         try{
             const body = {username, password, account_type, reg_email, reg_phone, cattery_name, organization, owner_name, city};
-            
+            console.log(body)
             const response = await fetch("http://localhost:4020/auth/register/breeder", 
             {
                 method: "POST",
