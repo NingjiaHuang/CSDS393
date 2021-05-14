@@ -90,9 +90,9 @@ function App() {
               <Route exact path="/parent_dashboard" render={props => isAuthenticated ? <ParentDashboard {...props} setAuth={setAuth}/>: <Redirect to="/login/parent"/>}/>
               <Route exact path="/login/admin" render={props => !isAuthenticated ? <AdminLogin {...props} setAuth={setAuth}/> : <Redirect to="/admin_dashboard"/>}/>
               <Route exact path="/admin_dashboard" render={props => isAuthenticated ? <AdminDashboard {...props} setAuth={setAuth}/>: <Redirect to="/login/admin"/>}/>
-              <Route exact path="/manage_cat_breeder" render={props => isAuthenticated ? <ManageCatsBreeder {...props} setAuth={setAuth}/>: <Redirect to="/login/breeder"/>}/>
+              <Route exact path="/manage_cat_breeder" render={ManageCatsBreeder}/>
               <Route exact path="/manage_cat_parent" render={props => isAuthenticated ? <ManageCatsParent {...props} setAuth={setAuth}/>: <Redirect to="/login/parent"/>}/>
-              <Route exact path="/gene_calc" render={props => isAuthenticated ? <GeneCalculator {...props} setAuth={setAuth}/>: <Redirect to="/login/parent"/>}/>
+              <Route exact path="/gene_calc" />
               <Route exact path="/family_tree" render={props => isAuthenticated ? <FamilyTree {...props} setAuth={setAuth}/>: <Redirect to="/login/parent"/>}/>
               <Route exact path="/search_cattery" render={props => isAuthenticated ? <Cattery {...props} setAuth={setAuth}/>: <Redirect to="/login/parent"/>}/>
               <Route exact path="/manage_user_account" render={props => isAuthenticated ? <ManageAccounts {...props} setAuth={setAuth}/>: <Redirect to="/login/parent"/>}/>

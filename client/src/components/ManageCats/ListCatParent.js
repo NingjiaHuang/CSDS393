@@ -1,7 +1,7 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import mock_data from "../MOCK_DATA.json"
 
-const ListCatParent = () =>{
+const ListCatParent = ({setAuth}) =>{
     const[searchTerm, setSearchTerm] = useState("")
     const[cats, setCats] = useState([]);
 

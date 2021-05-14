@@ -1,8 +1,7 @@
-import React, {Fragment, useState} from 'react'
-import { Button, Modal } from 'react-bootstrap';
-import { MDBContainer } from 'mdbreact';
+import React, { useState} from 'react'
+import { Button, Modal} from 'react-bootstrap';
 
-const AddPcat = ({setAuth}) =>{
+const AddPCat = ({setAuth}) =>{
     const [info, setInfo] = useState({
         cur_owner_cattery:"",
         cur_owner:"",
@@ -16,13 +15,15 @@ const AddPcat = ({setAuth}) =>{
         sire_name:"",
         dam_name:"",
         sale_status:"",
-        retire_status:"",
+        weight:"",
+        health_cond:""
     });
 
     const {cur_owner_cattery, cur_owner, certi_num, title, cat_reg_name, cat_name,
-        breed, sex, birth_date, sire_name, dam_name, sale_status,retire_status} = info;
-        
+    breed, sex, birth_date, sire_name, dam_name, sale_status, weight, health_cond} = info;
+    
     const onChange = (e) => {
+        e.preventDefault();
         setInfo({...info, [e.target.name]:e.target.value})
     }
 
@@ -33,16 +34,16 @@ const AddPcat = ({setAuth}) =>{
     const onSubmitForm = async(e) => {
         e.preventDefault();
         try{
+            console.log("executed.")
             const body = {cur_owner_cattery, cur_owner, certi_num, title, cat_reg_name, cat_name,
-                breed, sex, birth_date, sire_name, dam_name, sale_status, retire_status};
-
-            const response = await fetch("http://localhost:4020/api/v1/cats/create_breed", { // url needs update. need to add to breeding cat table
-                method: "POST",
+                breed, sex, birth_date, sire_name, dam_name, sale_status, weight, health_cond};
+            const response = await fetch("http://localhost:4020/api/v1/cats/create_preg",{
+                method:"POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
             });
-
-            window.location="/";
+            console.log(response)
+            window.location="/manage_cat_breeder";
         } catch(err){
             console.error(err.message);
         }
@@ -52,13 +53,15 @@ const AddPcat = ({setAuth}) =>{
 
     return(
         <div>
-                <Button data-testid="showBtn" variant="info" onClick={handleShow} >Add a breeding cat</Button>
+                <Button 
+                data-testid="showBtn"
+                variant="info" onClick={handleShow}>Add a pregnant cat</Button>
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
-                    <Modal.Title>Add a breeding cat</Modal.Title>
+                    <Modal.Title>Add a pregnant cat</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <form name="addcat" id="addcat" onSubmit={onSubmitForm}>
+                        <form id="addcat" onSubmit={onSubmitForm}>
                             <label>Current owner cattery name: </label>
                             <input type="text" 
                             name="cur_owner_cattery"    
@@ -134,9 +137,15 @@ const AddPcat = ({setAuth}) =>{
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Retire status: </label>
+                            <label>Current weight: </label>
                             <input type="text" 
-                            name="retire_status"   
+                            name="weight"   
+                            className="form-control my-2"
+                            onChange={e => onChange(e)}/>
+
+                            <label>Health condition: </label>
+                            <input type="text" 
+                            name="health_cond"   
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
                         </form>
@@ -154,4 +163,4 @@ const AddPcat = ({setAuth}) =>{
     )
 }
 
-export default AddPcat;
+export default AddPCat;

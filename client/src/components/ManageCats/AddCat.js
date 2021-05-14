@@ -5,7 +5,7 @@ import AddBCat from "./AddBCat"
 import AddPCat from "./AddPCat"
 import AddKitten from "./AddKitten"
 
-const AddCat = () =>{
+const AddCat = ({setAuth}) =>{
     return(
         <div className = 'mx-auto'>
              <table class="mx-auto" size="sm">

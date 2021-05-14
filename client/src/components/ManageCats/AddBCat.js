@@ -42,7 +42,7 @@ const AddBcat = ({setAuth}) =>{
                 body: JSON.stringify(body)
             });
 
-            window.location="/";
+            window.location="/manage_cat_breeder";
         } catch(err){
             console.error(err.message);
         }

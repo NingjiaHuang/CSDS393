@@ -1,7 +1,7 @@
 import React, { useState} from 'react'
 import { Button, Modal } from 'react-bootstrap';
 
-const AddKitten = () =>{
+const AddKitten = ({setAuth}) =>{
     const [info, setInfo] = useState({
         cur_owner_cattery:"",
         cur_owner:"",
@@ -35,13 +35,12 @@ const AddKitten = () =>{
         try{
             const body = {cur_owner_cattery, cur_owner, certi_num, title, cat_reg_name, cat_name,
                 breed, sex, birth_date, sire_name, dam_name, sale_status, weight, health_cond, vaccination_cond};
-            const response = await fetch("http://localhost:4020/api/v1/cats",{
+            const response = await fetch("http://localhost:4020/api/v1/cats/create_kitten",{
                 method:"Post",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
             });
-
-            window.location="/";
+            window.location="/manage_cat_breeder"
         } catch(err){
             console.error(err.message);
         }
