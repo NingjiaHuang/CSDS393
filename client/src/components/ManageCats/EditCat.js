@@ -43,6 +43,7 @@ const EditCat = ({cat}, {setAuth}) =>{
 
             <Button type="button" 
             class="btn btn-warning" 
+            data-testid="showbtn"
             onClick={handleShow}>
             Edit
             </Button>

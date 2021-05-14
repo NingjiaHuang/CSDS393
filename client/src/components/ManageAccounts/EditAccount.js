@@ -43,6 +43,7 @@ const EditAccount = ({account}) =>{
 
             <Button type="button" 
             class="btn btn-warning" 
+            data-testid="showbtn"
             onClick={handleShow}>
             Edit
             </Button>
