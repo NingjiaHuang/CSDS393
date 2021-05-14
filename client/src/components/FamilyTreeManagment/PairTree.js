@@ -54,30 +54,33 @@ const PairTree = () =>{
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Kitten name: </label>
+                            <label  htmlFor='cat_name'>Kitten name: </label>
                             <input 
                             type="text" 
                             name="cat_name"  
+                            id="cat_name" 
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Sire certificate number: </label>
+                            <label  htmlFor='sire_id'>Sire certificate number: </label>
                             <input 
                             type="text" 
+                            id="sire_id" 
                             name="sire_id"  
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Dam certificate number: </label>
+                            <label  htmlFor='dam_id'>Dam certificate number: </label>
                             <input 
                             type="text" 
-                            name="dam_id"   
+                            name="dam_id" 
+                            id="dam_id"   
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
                         </form>
                     </Modal.Body>
                     <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button data-testid="closebtn"variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
                     <Button variant="warning" onClick={onSubmitForm}>

@@ -55,3 +55,40 @@ test('pair tree should render react-modal', () => {
     expect (searchInputNode.value).toMatch("Ja")
 })
 
+test('click pair button ', () => {
+    const mockOnClick = jest.fn()
+    const mockonsubmit = jest.fn()
+    const { getByTestId, getByLabelText } = render(<PairTree onClick={mockOnClick()} onsubmit={mockonsubmit}/>)
+    const clickIndicator = getByTestId('pairBtn')
+    //open the modal
+    fireEvent.click(clickIndicator)
+    expect(mockOnClick).toHaveBeenCalledTimes(1)
+
+    //edit the modal form
+    const id = getByLabelText("Kitten certificate number:");
+    const name = getByLabelText("Kitten name:")
+    const scert = getByLabelText("Sire certificate number:")
+    const dcert = getByLabelText("Dam certificate number:")
+
+    fireEvent.change(id, {target:{value:"1"}})
+    fireEvent.change(name, {target:{value:"test"}})
+    fireEvent.change(scert, {target:{value:"2"}})
+    fireEvent.change(dcert, {target:{value:"3"}})
+
+    expect(id.value).toMatch("1")
+    expect(name.value).toMatch("test")
+    expect(scert.value).toMatch("2")
+    expect(dcert.value).toMatch("3")
+
+
+
+    //close the modal
+    const closebtn = getByTestId('closebtn')
+    fireEvent.click(closebtn)
+    expect(mockOnClick).toHaveBeenCalledTimes(1)
+    fireEvent.click(clickIndicator)
+    expect(mockOnClick).toHaveBeenCalledTimes(1)
+
+})
+
+
