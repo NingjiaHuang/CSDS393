@@ -13,7 +13,11 @@ const EditCat = ({cat}) =>{
         title: cat.title,
         cat_reg_name: cat.cat_reg_name,
         sale_status: cat.sale_status
+<<<<<<< HEAD
     });
+=======
+    }); 
+>>>>>>> db4d64ffb37ea59297febd8e6161c56ab3cb6352
     const {certi_num, cat_name, title, cat_reg_name, sale_status} = inputs;
     const onChange = (e) => {
         setInputs({...inputs, [e.target.name]:e.target.value})
@@ -41,6 +45,7 @@ const EditCat = ({cat}) =>{
 
             <Button type="button" 
             class="btn btn-warning" 
+            data-testid="showbtn"
             onClick={handleShow}>
             Edit
             </Button>
@@ -58,38 +63,44 @@ const EditCat = ({cat}) =>{
                 </Modal.Header>
                 <Modal.Body>
                     <form onSubmit={updateCatInfo}>
-                        <label>Certificate number: </label>
+                        <label htmlFor="certi_num">Certificate number: </label>
                         <input type="text" 
-                        name="certi_num"    
+                        name="certi_num"   
+                        id="certi_num" 
                         placeholder= {cat.certi_num}
                         onChange={e => onChange(e)}
                         className="form-control my-2"/>
 
-                        <label>Cat name: </label>
+                        <label htmlFor="cat_name">Cat name: </label>
                         <input 
                         type="text" 
+                        id="cat_name"  
+
                         name="cat_name"  
                         placeholder={cat.cat_name}  
                         onChange={e => onChange(e)}
                         className="form-control my-2"/>
 
-                        <label>Title: </label>
+                        <label htmlFor="title">Title: </label>
                         <input 
                         type="text" 
                         name="title"   
+                        id="title"
                         placeholder={cat.title}  
                         onChange={e => onChange(e)}
                         className="form-control my-2"/>
 
-                        <label>Cat registered name: </label>
+                        <label htmlFor="cat_reg_name">Cat registered name: </label>
                         <input type="text" 
-                        name="cat_reg_name"   
+                        name="cat_reg_name"
+                        id="cat_reg_name"   
                         placeholder={cat.cat_reg_name} 
                         onChange={e => onChange(e)}
                         className="form-control my-2"/>
 
-                        <label>Sale status: </label>
+                        <label htmlFor="sale_status">Sale status: </label>
                         <input type="text" 
+                        id="sale_status"   
                         name="sale_status"   
                         placeholder={cat.sale_status} 
                         onChange={e => onChange(e)}
@@ -98,7 +109,7 @@ const EditCat = ({cat}) =>{
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button data-testid="closebtn" variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
                     <Button variant="primary" onClick={updateCatInfo}>

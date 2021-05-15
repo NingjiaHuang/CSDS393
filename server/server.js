@@ -37,7 +37,7 @@ app.post("/api/v1/genecalculator", async (req, res) => {
 //--------------------------------------------------------------------------------------
 // Routes for Cat Class
 // get all cats information, both for breeders and parents
-app.get("/api/v1/cats", async (req, res) => {
+app.get("/api/v1/cats", async function(req, res) {
     try{
         const results = await db.query("SELECT * FROM cat");
         console.log(results);
@@ -59,13 +59,9 @@ app.get("/api/v1/cats/:id", async (req, res) => {
     try{
         const results = await db.query(`SELECT * FROM cat WHERE certi_num = ${req.params.id}`);
         console.log(results)
-        res.status(200).json({
-            status:"success",
-            data:{
-                cat: results.rows[0],
-            },
-        })
+        res.status(200).send(results.rows[0])
     }catch(err){
+        res.status(404)
         console.log(err)
     }
 
@@ -186,10 +182,10 @@ app.put("/api/v1/cats/update_breed/:id", async (req, res) => {
 });
 
 // update a pregnant cat
-app.put("/api/v1/cats/update_preg", async (req, res) => {
+app.put("/api/v1/cats/update_preg/:id", async (req, res) => {
     try{
         const results = await db.query("UPDATE preg_cat SET cur_owner_cattery = $1, certi_num = $2, title = $3, cat_reg_name = $4, cat_name = $5, breed = $6, sex = $7, birth_date = $8, sire_name = $9, dam_name = $10, sale_status = $11, weight = $12, health_cond = $13 WHERE certi_num = $14",
-        [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name,  req.body.sale_status, req.body.weight, req.body.health_cond, req.body.certi_num])
+        [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name,  req.body.sale_status, req.body.weight, req.body.health_cond, req.params.id])
         res.status(200).json({
             status: "success"
         })
@@ -199,10 +195,10 @@ app.put("/api/v1/cats/update_preg", async (req, res) => {
 });
 
 // update a kitten
-app.put("/api/v1/cats/update_kitten", async (req, res) => {
+app.put("/api/v1/cats/update_kitten/:id", async (req, res) => {
     try{
         const results = await db.query("UPDATE kitten SET cur_owner_cattery = $1, certi_num = $2, title = $3, cat_reg_name = $4, cat_name = $5, breed = $6, sex = $7, birth_date = $8, sire_name = $9, dam_name = $10, sale_status = $11, weight = $12, health_cond = $13, vaccination_cond = $14 WHERE certi_num = $15",
-        [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name,  req.body.sale_status, req.body.weight, req.body.health_cond, req.body.vaccination_cond, req.body.certi_num])
+        [req.body.cur_owner_cattery, req.body.certi_num, req.body.title, req.body.cat_reg_name, req.body.cat_name, req.body.breed, req.body.sex, req.body.birth_date, req.body.sire_name, req.body.dam_name,  req.body.sale_status, req.body.weight, req.body.health_cond, req.body.vaccination_cond, req.params])
         res.status(200).json({
             status: "success"
         })
@@ -258,10 +254,7 @@ app.post("/api/v1/cats/tree", async (req, res) =>{
 app.get("/api/v1/get_all_nodes", async (req, res) => {
     try{
         const results = await db.query("SELECT * FROM cat_node");
-        res.status(200).json({
-            status:"success",
-            data: results.rows
-        })
+        res.status(200).send(results.rows)
     } catch(err){
         console.log(err);
     }
@@ -273,7 +266,7 @@ app.get("/api/v1/catteries", async (req, res) => {
     try{
         const results = await db.query("SELECT * FROM cattery");
         console.log(results);
-        res.json(results.rows)
+        res.status(200).send(results.rows)
     } catch(err){
         console.log(err);
     }

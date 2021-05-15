@@ -26,7 +26,7 @@ router.post("/register/breeder", validInfo, async(req, res) => {
         , [username, bcryptPassword, account_type, reg_email, reg_phone, req.body.cattery_name, req.body.organization, req.body.owner_name, req.body.city]);
         // 5. generate jwt token for secure transaction of info and signature
         const token = jwtGenerator(newUser.rows[0].reg_email);
-        res.json({token});
+        res.status(200).json({token});
     } catch (err) {
         console.error(err.message);
         res.status(500).send("Server error.");
@@ -52,7 +52,7 @@ router.post("/register/parent", validInfo, async(req, res) => {
         , [username, bcryptPassword, account_type, reg_email, reg_phone, req.body.preferred_name]);
         // 5. generate jwt token for secure transaction of info and signature
         const token = jwtGenerator(newUser.rows[0].reg_email);
-        res.json({token});
+        res.status(200).json({token});
     } catch (err) {
         console.error(err.message);
         res.status(500).send("Server error.");
@@ -103,7 +103,7 @@ router.post("/login/breeder", validInfo, async (req, res) => {
         }
         // 4. given them a jwt token
         const token = jwtGenerator(user.rows[0].reg_email);
-        res.json({token});
+        res.status(200).json({token});
     }catch(err){
         console.error(err.message);
         res.status(500).send("Server error.");
@@ -181,7 +181,7 @@ router.get("/all_accounts", async (req, res) => {
     try{
         const results = await db.query("SELECT * FROM account");
         console.log(results);
-        res.json(results.rows)
+        res.status(200).send(results.rows)
     } catch(err){
         console.log(err);
     }

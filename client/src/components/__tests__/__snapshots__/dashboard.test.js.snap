@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot of a card 1`] = `
+<div
+  className="card-container"
+>
+  <div
+    className="image-container"
+  >
+    <img
+      alt=""
+    />
+  </div>
+  <div
+    className="card-content"
+  >
+    <div
+      className="card-title"
+    >
+      <h3 />
+    </div>
+    <div
+      className="card-body"
+    >
+      <p />
+    </div>
+  </div>
+  <div
+    className="btn"
+  >
+    <button>
+      <a />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`matches snapshot of admin dashboard 1`] = `<dashboard_admin />`;
+
+exports[`matches snapshot of breeder dashboard 1`] = `<dashboard_breeder />`;
+
+exports[`matches snapshot of parent dashboard 1`] = `<dashboard_parent />`;

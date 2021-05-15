@@ -1,0 +1,119 @@
+{
+  "stats": {
+    "suites": 0,
+    "tests": 0,
+    "passes": 0,
+    "pending": 0,
+    "failures": 0,
+    "start": "2021-05-14T22:00:33.858Z",
+    "end": "2021-05-14T22:00:33.861Z",
+    "duration": 3,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 1,
+    "hasOther": true,
+    "skipped": 2,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "57e4d923-b9ac-41ec-a4fd-f9509117e0e2",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "6357c6a7-88be-4626-8e27-a44c9460a4a5",
+          "title": "GET /api/v1/cats",
+          "fullFile": "/Users/ningjia/Desktop/CSDS393/test/task.js",
+          "file": "/test/task.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "It should GET all cats",
+              "fullTitle": "GET /api/v1/cats It should GET all cats",
+              "timedOut": false,
+              "duration": 0,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "chai.request('http://localhost:4020')\n    .get(\"/api/v1/cats\")\n    .end((err, response) => {\n        response.should.have.status(200);\n        response.should.be.json;\n        response.body.should.be.a('array')\n        response.body[0].should.have.property('cur_owner_cattery')\n        response.body[0].should.have.property('certi_num')\n        response.body[0].should.have.property('title')\n        response.body[0].should.have.property('cat_reg_name')\n        response.body[0].should.have.property('cat_name')\n        response.body[0].should.have.property('breed')\n        response.body[0].should.have.property('sex')\n        response.body[0].should.have.property('birth_date')\n        response.body[0].should.have.property('sire_name')\n        response.body[0].should.have.property('dam_name')\n        response.body[0].should.have.property('sale_status')\n    done();\n    })",
+              "err": {},
+              "uuid": "08f6eb88-33af-4450-a469-77095045e87b",
+              "parentUUID": null,
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "It should not GET cats",
+              "fullTitle": "GET /api/v1/cats It should not GET cats",
+              "timedOut": false,
+              "duration": 0,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "chai.request('http://localhost:4020')\n    .get(\"/api/v1/cat\")\n    .end((err, response) => {\n        response.should.have.status(404);\n    done();\n    })",
+              "err": {},
+              "uuid": "d32e6aa7-25ee-4744-91d8-8a2740277c1a",
+              "parentUUID": null,
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [
+            "08f6eb88-33af-4450-a469-77095045e87b",
+            "d32e6aa7-25ee-4744-91d8-8a2740277c1a"
+          ],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 5000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 5000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "8.4.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.2"
+    },
+    "marge": {
+      "options": null,
+      "version": "5.2.0"
+    }
+  }
+}

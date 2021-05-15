@@ -6,7 +6,7 @@ CREATE TABLE account (
     account_type varchar (20) NOT NULL,
     reg_email varchar(40) NOT NULL,
     reg_phone varchar(15) NOT NULL,
-    PRIMARY KEY(username, user_password, account_type)
+    PRIMARY KEY(reg_email)
 );
 
 CREATE TABLE breeder (

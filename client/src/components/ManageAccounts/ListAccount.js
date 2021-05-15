@@ -71,7 +71,7 @@ const ListAccount = () =>{
                       <td>{val.reg_email}</td>
                         <td><EditAccount  account = {val}/></td>
                     <td>
-                        <button className="btn btn-danger"
+                        <button className="btn btn-danger" data-testid="deletebtn"
                         onClick={() => deleteAccount(val.reg_email)}>Delete</button>
                         </td>
                 </tr>

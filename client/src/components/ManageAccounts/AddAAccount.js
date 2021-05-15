@@ -4,13 +4,13 @@ import { Button, Modal } from 'react-bootstrap';
 const AddAAccount = () =>{
     const [info, setInfo] = useState({
         username:"",
-        user_password:"",
+        password:"",
         account_type:"admini",
         reg_email:"",
         reg_phone:"",
     });
 
-    const {username, user_password,account_type, reg_email, reg_phone} = info;
+    const {username, password,account_type, reg_email, reg_phone} = info;
         
     const onChange = (e) => {
         setInfo({...info, [e.target.name]:e.target.value})
@@ -23,14 +23,19 @@ const AddAAccount = () =>{
     const onSubmitForm = async(e) => {
         e.preventDefault();
         try{
+<<<<<<< HEAD
             const body = {username, user_password,account_type, reg_email, reg_phone};
+=======
+            const body = {username, password,account_type, reg_email, reg_phone};
+            console.log(body);
+>>>>>>> db4d64ffb37ea59297febd8e6161c56ab3cb6352
             const response = await fetch("http://localhost:4020/auth/register/admin",{ // url needs update. need to add to breeding cat table
                 method:"Post",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
             });
 
-            window.location="/";
+            window.location="/manage_user_account";
         } catch(err){
             console.error(err.message);
         }
@@ -47,38 +52,41 @@ const AddAAccount = () =>{
                     </Modal.Header>
                     <Modal.Body>
                         <form onSubmit={onSubmitForm}>
-                            <label>Username: </label>
-                            <input type="text" 
+                        <label htmlFor="username">Username: </label>                            <input type="text" 
                             name="username"    
+                            id="username"
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Password: </label>
+                            <label htmlFor="password">Password: </label>
                             <input 
                             type="text" 
-                            name="user_password"  
+                            name="password" 
+                            id="password"
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Email: </label>
+                            <label htmlFor="reg_email">Email: </label>
                             <input 
                             type="text" 
-                            name="reg_email"   
+                            name="reg_email" 
+                            id="reg_email"
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
 
-                            <label>Phone: </label>
+                            <label htmlFor="reg_phone">Phone: </label>
                             <input type="text" 
                             name="reg_phone"   
+                            id="reg_phone"
                             className="form-control my-2"
                             onChange={e => onChange(e)}/>
                         </form>
                     </Modal.Body>
                     <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button data-testid = "closebtn" variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="warning" onClick={onSubmitForm, handleClose}>
+                    <Button data-testid="addbtn" variant="warning" onClick={onSubmitForm}>
                         Add
                     </Button>
                     </Modal.Footer>

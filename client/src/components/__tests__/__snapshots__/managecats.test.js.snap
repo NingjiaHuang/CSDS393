@@ -1,0 +1,302 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot of add a kitten 1`] = `
+<div>
+  <button
+    className="btn btn-info"
+    data-testid="showBtn"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    Add a kitten
+  </button>
+</div>
+`;
+
+exports[`matches snapshot of add breeding cat 1`] = `
+<div>
+  <button
+    className="btn btn-info"
+    data-testid="showBtn"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    Add a breeding cat
+  </button>
+</div>
+`;
+
+exports[`matches snapshot of add cat 1`] = `
+<div
+  className="mx-auto"
+>
+  <table
+    class="mx-auto"
+    size="sm"
+  >
+    <thead>
+      <th>
+        <div>
+          <button
+            className="btn btn-info"
+            data-testid="showBtn"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            Add a breeding cat
+          </button>
+        </div>
+      </th>
+      <th>
+        <div>
+          <button
+            className="btn btn-info"
+            data-testid="showBtn"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            Add a pregnant cat
+          </button>
+        </div>
+      </th>
+      <th>
+        <div>
+          <button
+            className="btn btn-info"
+            data-testid="showBtn"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            Add a kitten
+          </button>
+        </div>
+      </th>
+    </thead>
+  </table>
+</div>
+`;
+
+exports[`matches snapshot of add pregnant cat 1`] = `
+<div>
+  <button
+    className="btn btn-info"
+    data-testid="showBtn"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    Add a pregnant cat
+  </button>
+</div>
+`;
+
+exports[`matches snapshot of list cats 1`] = `
+Array [
+  " ",
+  <input
+    className="form-control"
+    data-testid="searchCat"
+    onChange={[Function]}
+    placeholder="search cats by name here"
+    type="text"
+  />,
+  <table
+    class="table mt-5 text-center"
+  >
+    <thead>
+      <tr>
+        <th>
+          Certificate Number
+        </th>
+        <th>
+          Cat Name
+        </th>
+        <th>
+          Edit
+        </th>
+        <th>
+          Delete
+        </th>
+      </tr>
+    </thead>
+    <tbody />
+  </table>,
+]
+`;
+
+exports[`matches snapshot of list cats 2`] = `
+Array [
+  " ",
+  <input
+    className="form-control"
+    data-testid="searchCat"
+    onChange={[Function]}
+    placeholder="search cats by name here"
+    type="text"
+  />,
+  <table
+    class="table mt-5 text-center"
+  >
+    <thead>
+      <tr>
+        <th>
+          Certificate Number
+        </th>
+        <th>
+          Cat Name
+        </th>
+      </tr>
+    </thead>
+    <tbody />
+  </table>,
+]
+`;
+
+exports[`matches snapshot of manage cats of breeder 1`] = `
+<div
+  className="container"
+  data-test="container"
+>
+  <div
+    className="mx-auto mt-5"
+  >
+    <h2
+      className="text-center"
+    >
+      Manage your cats 
+    </h2>
+    <div
+      className="mx-auto"
+    >
+      <table
+        class="mx-auto"
+        size="sm"
+      >
+        <thead>
+          <th>
+            <div>
+              <button
+                className="btn btn-info"
+                data-testid="showBtn"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                Add a breeding cat
+              </button>
+            </div>
+          </th>
+          <th>
+            <div>
+              <button
+                className="btn btn-info"
+                data-testid="showBtn"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                Add a pregnant cat
+              </button>
+            </div>
+          </th>
+          <th>
+            <div>
+              <button
+                className="btn btn-info"
+                data-testid="showBtn"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                Add a kitten
+              </button>
+            </div>
+          </th>
+        </thead>
+      </table>
+    </div>
+    <div
+      className="mt-3"
+    >
+       
+      <input
+        className="form-control"
+        data-testid="searchCat"
+        onChange={[Function]}
+        placeholder="search cats by name here"
+        type="text"
+      />
+      <table
+        class="table mt-5 text-center"
+      >
+        <thead>
+          <tr>
+            <th>
+              Certificate Number
+            </th>
+            <th>
+              Cat Name
+            </th>
+            <th>
+              Edit
+            </th>
+            <th>
+              Delete
+            </th>
+          </tr>
+        </thead>
+        <tbody />
+      </table>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`matches snapshot of veiw cats of parent 1`] = `
+<div
+  className="container"
+  data-test="container"
+>
+  <div
+    className="mx-auto mt-5"
+  >
+    <h2
+      className="text-center"
+    >
+      Manage your cats 
+    </h2>
+    <div
+      className="mt-3"
+    >
+       
+      <input
+        className="form-control"
+        data-testid="searchCat"
+        onChange={[Function]}
+        placeholder="search cats by name here"
+        type="text"
+      />
+      <table
+        class="table mt-5 text-center"
+      >
+        <thead>
+          <tr>
+            <th>
+              Certificate Number
+            </th>
+            <th>
+              Cat Name
+            </th>
+          </tr>
+        </thead>
+        <tbody />
+      </table>
+    </div>
+  </div>
+</div>
+`;

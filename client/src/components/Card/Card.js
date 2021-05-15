@@ -18,11 +18,9 @@ const Card = ({title, imageUrl, body, button, url}) => {
             </div>
 
             <div className="btn">
-                <Link to={url}>
                 <button>
                     <a>{button}</a>
                 </button>
-                </Link>
             </div>
         </div>
     )

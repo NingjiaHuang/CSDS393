@@ -1,0 +1,170 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot of display tree 1`] = `
+<div
+  data-testid="displaytree-1"
+>
+   
+  <input
+    className="form-control"
+    data-testid="searchTree"
+    onChange={[Function]}
+    placeholder="search a family member here"
+    type="text"
+  />
+  <table
+    class="table mt-5 text-center"
+  >
+    <thead>
+      <tr>
+        <th>
+          Cat Name
+        </th>
+        <th>
+          Certificate number
+        </th>
+        <th>
+          Sire path
+        </th>
+        <th>
+          Dam path
+        </th>
+      </tr>
+    </thead>
+    <tbody />
+  </table>
+</div>
+`;
+
+exports[`matches snapshot of family tree of breeder 1`] = `
+<div
+  className="container"
+  data-test="container"
+>
+  <div
+    className="mx-auto mt-5"
+  >
+    <h2
+      className="text-center"
+    >
+      Family Tree
+    </h2>
+    <div>
+      <button
+        className="btn btn-info"
+        data-testid="pairBtn"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        Pair
+      </button>
+    </div>
+    <div
+      className="mt-3"
+    >
+      <div
+        data-testid="displaytree-1"
+      >
+         
+        <input
+          className="form-control"
+          data-testid="searchTree"
+          onChange={[Function]}
+          placeholder="search a family member here"
+          type="text"
+        />
+        <table
+          class="table mt-5 text-center"
+        >
+          <thead>
+            <tr>
+              <th>
+                Cat Name
+              </th>
+              <th>
+                Certificate number
+              </th>
+              <th>
+                Sire path
+              </th>
+              <th>
+                Dam path
+              </th>
+            </tr>
+          </thead>
+          <tbody />
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`matches snapshot of family tree of parents 1`] = `
+<div
+  className="container"
+  data-test="container"
+>
+  <div
+    className="mx-auto mt-5"
+  >
+    <h2
+      className="text-center"
+    >
+      Family Tree
+    </h2>
+    <div
+      className="mt-3"
+    >
+      <div
+        data-testid="displaytree-1"
+      >
+         
+        <input
+          className="form-control"
+          data-testid="searchTree"
+          onChange={[Function]}
+          placeholder="search a family member here"
+          type="text"
+        />
+        <table
+          class="table mt-5 text-center"
+        >
+          <thead>
+            <tr>
+              <th>
+                Cat Name
+              </th>
+              <th>
+                Certificate number
+              </th>
+              <th>
+                Sire path
+              </th>
+              <th>
+                Dam path
+              </th>
+            </tr>
+          </thead>
+          <tbody />
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`matches snapshot of pair cats 1`] = `
+<div>
+  <button
+    className="btn btn-info"
+    data-testid="pairBtn"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    Pair
+  </button>
+</div>
+`;
